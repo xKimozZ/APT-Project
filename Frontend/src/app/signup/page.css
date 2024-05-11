@@ -1,0 +1,110 @@
+
+.allPadding {
+  padding: 3em 0;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.positioning {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+  justify-content: center !important;
+}
+
+.signheader {
+  text-align: center !important;
+  margin-bottom: 3rem !important;
+  flex: 0 0 50%;
+  max-width: 50%;
+}
+
+h2 {
+    font-size: 28px;
+  color: #000;
+  font-weight: 400;
+}
+
+.loginStyle {
+  position: relative;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0px 10px 34px -15px rgba(0, 0, 0, 0.24);
+  padding: 4rem !important;
+}
+
+h3 {
+  font-weight: 300;
+  font-size: 24px;
+  margin-bottom: 1.5rem !important;
+  color: #000;
+}
+
+.inputBoxFlex {
+  position: relative;
+  margin-bottom: 1rem;
+  transition: .3s all ease;
+}
+
+.inputBoxStyle {
+  height: 48px;
+  width: 100%;
+  background: #fff;
+  color: #000;
+  font-size: 16px;
+  border-radius: 5px;
+  box-shadow: none;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding-left: 60px;
+  border-top-left-radius: 0.25rem !important;
+  border-bottom-left-radius: 0.25rem !important;
+  transition: .3s all ease;
+}
+
+.inputBoxStyle:focus {
+    outline: none;
+    transition: .3s all ease;
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+
+.icon {
+  position: absolute;
+  width: 48px;
+  height: 48px;
+  background: #3447c3;
+  fill: #fff;
+  font-size: 20px;
+  border-radius: 5px 0 0 5px;
+}
+
+.loginIcon {
+  align-items: center !important;
+  justify-content: center !important;
+  display: flex !important;
+}
+
+.loginBottomFlex {
+	display: flex !important;
+    align-items: center !important;
+}
+
+  .bottom {
+    margin-top: 1.5rem !important;
+    text-align: center !important;
+  }
+  
+  a {
+	transition: .3s all ease;
+	color: #3447c3;
+    text-decoration: none;
+}
+
+    a:hover {
+        transition: .3s all ease;
+        color: #34c1c3;
+        font-size:20px;
+    }

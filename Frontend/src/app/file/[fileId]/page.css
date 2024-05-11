@@ -1,0 +1,64 @@
+hr {
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+	border: 0;
+	border-top: 1px solid rgba(0,0,0,.1);
+}
+
+.allPadding {
+    padding: 3em 0;
+  }  
+
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+.header {
+    margin-bottom: 1rem !important;
+    box-sizing: border-box;
+    border-left: 1px solid rgba(0,0,0,.1);
+    border-right: 1px solid rgba(0,0,0,.1);
+}
+
+.toolbar {
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    padding: .5rem !important;
+  }
+
+.columnView {
+  margin: 0 0.25rem 0.25rem 0;
+  padding: 1.25rem 0 1rem 0;
+  width: 9rem;
+  text-align: center;
+}
+
+  .fileContainer {
+    width: 100%;
+	display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 4px;
+}
+
+.columnView {
+  margin: 0 0.25rem 0.25rem 0;
+  padding: 1.25rem 0 1rem 0;
+  width: 9rem;
+  text-align: center;
+}
+
+.kitteh {
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: inline-block;
+  height: 150px;
+  margin-bottom: 20px;
+  width: 150px;
+}
