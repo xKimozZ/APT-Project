@@ -39,7 +39,7 @@ async function handler(url, method, body, token="") {
       const response = await fetch(`${base_url}${url}`, requestOptions);
   
       if (!response.ok) {
-        throw new Error('API request failed');
+        throw new Error(`${response.status}`);
       }
   
       return response.json();
@@ -49,4 +49,13 @@ async function handler(url, method, body, token="") {
     }
   };
 
+  class APIError extends Error {
+    constructor(message, statusCode) {
+      super(message);
+      this.name = 'APIError';
+      this.statusCode = statusCode;
+    }
+  }
+
+  
   export default handler;

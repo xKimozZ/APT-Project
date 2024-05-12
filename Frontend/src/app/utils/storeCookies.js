@@ -21,21 +21,21 @@
     const expires = expirationDate.toUTCString();
             cookies().set('access_token', cookieData.access_token, {
                 path: '/',
-                maxAge: expirationDate.getHours() - new Date().getHours(), // Expires in 4 hours
+                maxAge: expirationDate - new Date(), // Expires in 4 hours
                 httpOnly: true,
                 secure: false,
                 expires: expires, // Set the Expires attribute
             }),
             cookies().set('user_id', cookieData.user.id, {
               path: '/',
-              maxAge: expirationDate.getHours() - new Date().getHours(), // Expires in 4 hours
+              maxAge: expirationDate - new Date(), // Expires in 4 hours
               httpOnly: true,
               secure: false,
               expires: expires, // Set the Expires attribute
           }),
             cookies().set('username', cookieData.user.username, {
                 path: '/',
-                maxAge: expirationDate.getHours() - new Date().getHours(), // Expires in 4 hours
+                maxAge: expirationDate - new Date(), // Expires in 4 hours
                 httpOnly: true,
                 secure: false,
                 expires: expires, // Set the Expires attribute

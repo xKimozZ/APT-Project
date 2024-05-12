@@ -70,9 +70,11 @@
 
 .RichTextToolbarItem:active {
     background-color: #c2c3c4;
-}Z
+}
 
 .ItemSelected {
+    transition: .3s all ease;
+    transform: translateY(-0.3em);
     color: #1a1a1b !important;
 }
 

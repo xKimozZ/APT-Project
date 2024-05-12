@@ -2,7 +2,7 @@
 import React, {useState, useEffect, useMemo} from "react";
 import apiHandler from "@/app/utils/apiHandler.js"
 import { useRouter } from "next/navigation";
-import "./page.css"
+import styles from"./page.module.css"
 import deleteCookies from "@/app/utils/deleteCookies";
 import getCookies from "@/app/utils/getCookies";
 import OutlineButton from "../components/UI/OutlineButton";
@@ -312,7 +312,7 @@ function FileExplorer() {
     useEffect(() => {
       async function cookiesfn() {
         const cookies = await getCookies();
-        
+        console.log(cookies);
         try {
           if (cookies !== null && cookies.access_token && cookies.username) {
             const validate = await apiHandler(`/validate-token`, "GET", "", cookies.access_token);
@@ -328,7 +328,12 @@ function FileExplorer() {
           handleLogout();
         }
       }
-      cookiesfn();
+      
+      const delay = setTimeout(() => {
+        cookiesfn();
+      }, 0);
+  
+      return () => clearTimeout(delay);
     }, []);
 
     async function getFiles() {
@@ -468,10 +473,9 @@ function FileExplorer() {
       wrapperStyle={{display:"flex",width:"100%",alignItems:"center", justifyContent:"center",}}
       wrapperClass=""
       /></div> :
-    <div className="allPadding container">
-      <div className="header">
-        <hr style={{ margin: "0" }} />
-        <div className="toolbar">
+    <div className={`${styles.allPadding} ${styles.container}`}>
+      <div className={styles.header}>
+        <div className={styles.toolbar}>
           <div style={{ display: "flex", gap: "1em", alignItems:"center" }}>
             <OutlineButton
               isDanger={true}
@@ -579,9 +583,8 @@ function FileExplorer() {
             )}
           </div>
         </div>
-        <hr style={{ margin: "0" }} />
       </div>
-      <div className="fileContainer" style={{paddingLeft:"1.7em"}}>
+      <div className={styles.fileContainer} style={{paddingLeft:"1.7em"}}>
         {filteredFiles.length > 0 ? (
           filteredFiles.map((file, index) => (
             <DocumentIcon

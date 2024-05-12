@@ -23,7 +23,7 @@
   max-width: 50%;
 }
 
-h2 {
+.container h2 {
     font-size: 28px;
   color: #000;
   font-weight: 400;
@@ -37,7 +37,7 @@ h2 {
   padding: 4rem !important;
 }
 
-h3 {
+.container h3 {
   font-weight: 300;
   font-size: 24px;
   margin-bottom: 1.5rem !important;
@@ -97,13 +97,13 @@ h3 {
     text-align: center !important;
   }
   
-  a {
+ .container a {
 	transition: .3s all ease;
 	color: #3447c3;
     text-decoration: none;
 }
 
-    a:hover {
+.container    a:hover {
         transition: .3s all ease;
         color: #34c1c3;
         font-size:20px;

@@ -4,7 +4,7 @@ import apiHandler from "@/app/utils/apiHandler.js"
 import { useRouter } from "next/navigation";
 import Checkbox from "../components/UI/Checkbox";
 import OutlineButton from "../components/UI/OutlineButton";
-import "./page.css";
+import styles from "./page.module.css";
 
 function Signup() {
   const router = useRouter();
@@ -70,11 +70,21 @@ function Signup() {
         password: password,
       }
       var response = await apiHandler("/signup", "POST", bodyData);
+      await deleteCookies();
+      await storeCookies(response);
       response = await apiHandler("/login", "POST", bodyData);
       console.log(response);
       router.push("/home");
     } catch (error) {
       console.log(error);
+      if (error.message.includes("409")) {
+        // Handle 401 Unauthorized error
+        setErrors(6);
+      } else {
+        // Handle other errors
+        setErrors(7);
+        console.log("Error:", error);
+      }
     }
     
   };
@@ -90,25 +100,27 @@ function Signup() {
         return "Passwords don't match.";
       else if (errors === 5)
         return "Re-enter the password.";
+      else if (errors === 6)
+        return "Username already taken.";
       else
         return "unknown";
   }
 
   return (
-    <section className="allPadding">
-      <div className="container">
-        <div className="positioning">
-          <div className="signheader">
+    <section className={styles.allPadding}>
+      <div className={styles.container}>
+        <div className={styles.positioning}>
+          <div className={styles.signheader}>
             <h2>APT Project</h2>
             <h4 style={{fontWeight: "300"}}>Karim Ayman - Amr Magdy - Salma Mahmoud - Malak Mohamed</h4>
           </div>
         </div>
-        <div className="positioning">
-          <div className="loginStyle">
+        <div className={styles.positioning}>
+          <div className={styles.loginStyle}>
             <h3>Sign Up</h3>
             <div style={{ minWidth: "400px" }}>
-              <div className="inputBoxFlex">
-                <div className="icon loginIcon">
+              <div className={styles.inputBoxFlex}>
+                <div className={`${styles.icon} ${styles.loginIcon}`}>
                   <svg
                     style={{ fill: "#fff" }}
                     aria-hidden="true"
@@ -127,7 +139,7 @@ function Signup() {
                 </div>
                 <input
                   type="text"
-                  className="inputBoxStyle"
+                  className={styles.inputBoxStyle}
                   value={username}
                   onChange={handleNameChange}
                   onKeyDown={handleKeyPress}
@@ -135,8 +147,8 @@ function Signup() {
                   required=""
                 />
               </div>
-              <div className="inputBoxFlex">
-                <div className="icon loginIcon">
+              <div className={styles.inputBoxFlex}>
+                <div className={`${styles.icon} ${styles.loginIcon}`}>
                   <svg
                     style={{ fill: "#fff" }}
                     aria-hidden="true"
@@ -158,13 +170,13 @@ function Signup() {
                   value={password}
                   onChange={handlePasswordChange}
                   onKeyDown={handleKeyPress}
-                  className="inputBoxStyle"
+                  className={styles.inputBoxStyle}
                   placeholder="Password"
                   required=""
                 />
               </div>
-              <div className="inputBoxFlex">
-                <div className="icon loginIcon">
+              <div className={styles.inputBoxFlex}>
+                <div className={`${styles.icon} ${styles.loginIcon}`}>
                   <svg
                     style={{ fill: "#fff" }}
                     aria-hidden="true"
@@ -191,7 +203,7 @@ function Signup() {
                   value={password1}
                   onChange={handlePassword1Change}
                   onKeyDown={handleKeyPress}
-                  className="inputBoxStyle"
+                  className={styles.inputBoxStyle}
                   placeholder="Confirm Password"
                   required=""
                 />
@@ -203,7 +215,7 @@ function Signup() {
               ) : (
                 ""
               )}
-              <div className="loginBottomFlex">
+              <div className={styles.loginBottomFlex}>
                 <div
                   style={{
                     width: "100%",
@@ -213,16 +225,13 @@ function Signup() {
                   }}
                 >
                   <OutlineButton
-                    btnClick={() => {
-                      console.log(username);
-                      console.log(password);
-                    }}
+                    btnClick={handleSubmit}
                   >
                     Confirm
                   </OutlineButton>
                 </div>
               </div>
-              <div className="bottom">
+              <div className={styles.bottom}>
                 <p>Already have an account?</p> <a href="login" onClick={(event) => {
                   event.preventDefault();
                   router.push("/login")

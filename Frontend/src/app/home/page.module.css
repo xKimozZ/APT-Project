@@ -1,9 +1,4 @@
-hr {
-	margin-top: 1rem;
-	margin-bottom: 1rem;
-	border: 0;
-	border-top: 1px solid rgba(0,0,0,.1);
-}
+
 
 .allPadding {
     padding: 3em 0;
@@ -17,8 +12,7 @@ hr {
 .header {
     margin-bottom: 1rem !important;
     box-sizing: border-box;
-    border-left: 1px solid rgba(0,0,0,.1);
-    border-right: 1px solid rgba(0,0,0,.1);
+    border: 1px solid rgba(0,0,0,.1);
 }
 
 .toolbar {

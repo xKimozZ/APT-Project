@@ -1,17 +1,22 @@
 "use client";
 import React, {useState, useEffect, useMemo} from "react";
 import { useRouter } from "next/navigation";
-import "./page.css"
+import styles from "./page.module.css"
 import kitteh from "@/app/assets/kitteh.png"
 import OutlineButton from "@/app/components/UI/OutlineButton";
 import DocumentIcon from "@/app/components/UI/DocumentIcon";
+import getCookies from "@/app/utils/getCookies";
+import apiHandler from "@/app/utils/apiHandler.js"
+import { TailSpin } from "react-loader-spinner";
 import WrapperNew from "@/app/components/UI/WrapperNew";
 import RichTextEditor from "@/app/components/UI/RichTextEditor";
 
 function Editor({params : {fileId}}) {
   const router = useRouter();
+  
+  const [loading, setLoading] = useState(true);
     const [token, setToken] = useState("");
-    const [username, setMyUsername] = useState("tester");
+    const [username, setUsername] = useState("tester");
     const [newMenuOn, setNewMenuOn] = useState(false);
     const [displayOthers, setDisplayOthers] = useState(true);
     const [filesArray, setFilesArray] = useState([
@@ -20,15 +25,28 @@ function Editor({params : {fileId}}) {
     useEffect(() => {
       async function cookiesfn() {
         const cookies = await getCookies();
-        if(cookies !== null && cookies.access_token&&cookies.username){
-          setToken(cookies.access_token);
-          setUserName(cookies.username);
-        } else {
-          router.push("/login")
+        console.log(cookies);
+        try {
+          if (cookies !== null && cookies.access_token && cookies.username) {
+            const validate = await apiHandler(`/validate-token`, "GET", "", cookies.access_token);
+            //console.log(validate);
+            setToken(cookies.access_token);
+            setUsername(cookies.username);
+            setLoading(false);
+          } else {
+            router.push("/login");
+          }
+        } catch(error) {
+          console.log(error);
+          handleLogout();
         }
-  
       }
-      cookiesfn();
+      
+      const delay = setTimeout(() => {
+        cookiesfn();
+      }, 0);
+  
+      return () => clearTimeout(delay);
     }, []);
 
     async function getFiles() {
@@ -149,11 +167,23 @@ function Editor({params : {fileId}}) {
       }, [displayOthers, filesArray, username]);
 
   return (
-    <div className="allPadding container">
-      <div className="header">
-        <hr style={{ margin: "0" }} />
-        <div className="toolbar">
-          <div style={{display:"flex", gap:"1em"}}>
+    <>
+    {loading ? <div style={{display:"flex",flexDirection:"column",width:"100%",alignItems:"center",
+    justifyContent:"center", gap:"2em",margin:"0 auto",  position:"absolute",top:"35%"}}>
+      <TailSpin
+      visible={true}
+      height="160"
+      width="160"
+      color="#3447c3"
+      ariaLabel="tail-spin-loading"
+      radius="0.5"
+      wrapperStyle={{display:"flex",width:"100%",alignItems:"center", justifyContent:"center",}}
+      wrapperClass=""
+      /></div> :
+    <div className={`${styles.allPadding} ${styles.container}`}>
+      <div className={styles.header}>
+        <div className={styles.toolbar}>
+          <div style={{display:"flex", gap:"1em", alignItems:"center" }}>
             <OutlineButton isInverted={true} btnClick={() => router.push("/home")}>
             <svg
               style={{ marginRight:"1em"}}
@@ -197,6 +227,7 @@ function Editor({params : {fileId}}) {
             </svg>
             New Document
           </OutlineButton>
+          Editing as {username}
           </div>
           
           <WrapperNew
@@ -208,9 +239,8 @@ function Editor({params : {fileId}}) {
             Currently editing file ID: <strong>{fileId}</strong>
           </div>
         </div>
-        <hr style={{ margin: "0" }} />
       </div>
-      <div className="fileContainer">
+      <div className={styles.fileContainer}>
         {true ? (
           <div
             style={{ display: "flex", width: "100%", justifyContent: "center" }}
@@ -226,7 +256,7 @@ function Editor({params : {fileId}}) {
             }}
           >
             <div
-              className="kitteh"
+              className={styles.kitteh}
               style={{ backgroundImage: `url(${kitteh.src})` }}
             ></div>
             <span style={{ textAlign: "center", width: "100%" }}>
@@ -235,7 +265,8 @@ function Editor({params : {fileId}}) {
           </div>
         )}
       </div>
-    </div>
+    </div>}
+    </>
   );
 }
 

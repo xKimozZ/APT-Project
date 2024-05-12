@@ -6,7 +6,7 @@ import Checkbox from "../components/UI/Checkbox";
 import OutlineButton from "../components/UI/OutlineButton";
 import storeCookies from "../utils/storeCookies.js";
 import deleteCookies from "../utils/deleteCookies.js";
-import "./page.css";
+import styles from "./page.module.css";
 
 function Login() {
   const router = useRouter();
@@ -71,8 +71,15 @@ function Login() {
     await storeCookies(response);
         router.push("/home");
     } catch (error) {
-        setErrors(5);
       console.log(error);
+      if (error.message.includes("401")) {
+        // Handle 401 Unauthorized error
+        setErrors(4);
+      } else {
+        // Handle other errors
+        setErrors(5);
+        console.log("Error:", error);
+      }
     }
     
   };
@@ -91,20 +98,20 @@ function Login() {
   }
 
   return (
-    <section className="allPadding">
-      <div className="container">
-        <div className="positioning">
-          <div className="signheader">
+    <section className={styles.allPadding}>
+      <div className={styles.container}>
+        <div className={styles.positioning}>
+          <div className={styles.signheader}>
             <h2>APT Project</h2>
             <h4 style={{fontWeight: "300"}}>Karim Ayman - Amr Magdy - Salma Mahmoud - Malak Mohamed</h4>
           </div>
         </div>
-        <div className="positioning">
-          <div className="loginStyle">
+        <div className={styles.positioning}>
+          <div className={styles.loginStyle}>
             <h3>Sign In</h3>
             <div style={{ minWidth: "400px" }} >
-              <div className="inputBoxFlex">
-                <div className="icon loginIcon">
+              <div className={styles.inputBoxFlex}>
+                <div className={`${styles.icon} ${styles.loginIcon}`}>
                   <svg
                     style={{ fill: "#fff" }}
                     aria-hidden="true"
@@ -123,7 +130,7 @@ function Login() {
                 </div>
                 <input
                   type="text"
-                  className="inputBoxStyle"
+                  className={styles.inputBoxStyle}
                   value={username}
                   onChange={handleNameChange}
                   onKeyDown={handleKeyPress}
@@ -131,8 +138,8 @@ function Login() {
                   required=""
                 />
               </div>
-              <div className="inputBoxFlex">
-                <div className="icon loginIcon">
+              <div className={styles.inputBoxFlex}>
+                <div className={`${styles.icon} ${styles.loginIcon}`}>
                   <svg
                     style={{ fill: "#fff" }}
                     aria-hidden="true"
@@ -154,13 +161,13 @@ function Login() {
                   value={password}
                   onChange={handlePasswordChange}
                   onKeyDown={handleKeyPress}
-                  className="inputBoxStyle"
+                  className={styles.inputBoxStyle}
                   placeholder="Password"
                   required=""
                 />
               </div>
               {errors !== 0 ? <p style={{color: "red", textAlign:"center"}}>Error: {getErrorMessage()}</p> : ""}
-              <div className="loginBottomFlex">
+              <div className={styles.loginBottomFlex}>
                 <div style={{ width: "100%" }}>
                   <Checkbox isChecked={remember} onToggle={()=>{setRemember(!remember)}} label={"Remember Me"} />
                 </div>
@@ -168,7 +175,7 @@ function Login() {
                   <OutlineButton btnClick={handleSubmit}>Login</OutlineButton>
                 </div>
               </div>
-              <div className="bottom">
+              <div className={styles.bottom}>
                 <p>Don't have an account?</p> <a href="signup"
                 onClick={(event) => {
                   event.preventDefault();
