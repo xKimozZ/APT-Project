@@ -85,13 +85,10 @@ function DocumentIcon({
   };
 
   return (
-    <div style={{outline:"none"}} className={!menuVisible && styles.hov} tabIndex={0} onKeyDown={(event) => {
-      handleKeyDown(event);
-    }}>
+    <div className={styles.hov}>
 <div
       className={styles.iconPos}
       onClick={() => !menuVisible && router.push(`/file/${fileId}`)}
-      
     >
       <div style={{ position: "absolute", left: "3%", top: "-2px" }}>
         {isOwner ? (
@@ -123,7 +120,6 @@ function DocumentIcon({
       </svg>
       <a
         href={`file/${fileId}`}
-        tabIndex={-1}
         className={styles.fileName}
         onClick={(event) => event.preventDefault()}
         onKeyDown={(event) => {
@@ -150,7 +146,6 @@ function DocumentIcon({
           title={name}
         />
         <button
-        tabIndex={-1}
           type="button"
           className={styles.btn}
           onClick={(event) => {

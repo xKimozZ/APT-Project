@@ -1,11 +1,8 @@
 "use client";
 import React, {useState, useEffect} from "react";
-import apiHandler from "@/app/utils/apiHandler.js"
 import { useRouter } from "next/navigation";
 import Checkbox from "../components/UI/Checkbox";
 import OutlineButton from "../components/UI/OutlineButton";
-import storeCookies from "../utils/storeCookies.js";
-import deleteCookies from "../utils/deleteCookies.js";
 import "./page.css";
 
 function Login() {
@@ -52,29 +49,22 @@ function Login() {
         return;
       }
 
-      await loginSubmit();
+      await loginSubmit(formData);
   }
 
   const loginSubmit = async () => {
-
-    //const response = await apiHandler("/login", "POST", bodyData);
-    var response;
     try {
-      const bodyData = {
+      bodyData = {
         username: username,
         password: password,
         remember: remember,
       }
-       response = await apiHandler("/login", "POST", bodyData);
-      console.log(response);
-      await deleteCookies();
-    await storeCookies(response);
-        router.push("/home");
+      const response = await apiHandler("/login", "POST", bodyData);
+      await storeCookies(response);
     } catch (error) {
-        setErrors(5);
-      console.log(error);
+      console.log("Error Please Login Again");
     }
-    
+    router.push("/home");
   };
 
   function getErrorMessage() {
@@ -165,7 +155,7 @@ function Login() {
                   <Checkbox isChecked={remember} onToggle={()=>{setRemember(!remember)}} label={"Remember Me"} />
                 </div>
                 <div style={{ marginRight: "4px" }}>
-                  <OutlineButton btnClick={handleSubmit}>Login</OutlineButton>
+                  <OutlineButton btnClick={()=>{console.log(username); console.log(password); }}>Login</OutlineButton>
                 </div>
               </div>
               <div className="bottom">

@@ -25,7 +25,7 @@
 
 async function handler(url, method, body, token="") {
     try {
-      const base_url = 'http://localhost:8081';
+      const base_url = 'http://localhost:80/api';
       const headers = token !== "" ? {"Content-Type": "application/json","Authorization": `Bearer ${token}`} : {"Content-Type": "application/json"}
 
   
