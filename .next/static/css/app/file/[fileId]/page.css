@@ -1,0 +1,1097 @@
+/*!***************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/app/components/UI/Listbutton.module.css ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************************/
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+
+.Listbutton_smallcontainer__Y8yhv{
+    display: flex;
+    flex-direction: column;
+    width: 100%; 
+    align-items: flex-start;
+    font-family: 'IBM Plex Sans';
+    color: var(--mainblackcolor);
+  }
+
+  .Listbutton_subsectiontitle__BXxq0{
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 20px; 
+  }
+
+  .Listbutton_description__SgZ3k{
+    margin-top: -10px;
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--graycolor);
+  }
+  .Listbutton_changecontainer__I6QB6{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    width: 100%
+  }
+  .Listbutton_openlistbutton__P7L6J{
+    width: 120px;
+    background-color: var(--buttonbackground);
+    height: 40px;
+    border: none;
+    font-weight: 700;
+    font-size: 12px;
+  }
+
+  .Listbutton_openlistbutton__P7L6J.Listbutton_blueButton__V6zG2 
+  {
+    color: var(--brightcolor);
+  }
+
+  .Listbutton_openlistbutton__P7L6J.Listbutton_greyButton__3VS8r 
+  {
+    color: var(--graycolor);
+  }
+
+  .Listbutton_openlistbutton__P7L6J:hover{
+    cursor: pointer;
+  }
+
+  .Listbutton_openlistbutton__P7L6J::after{
+    content: "";
+    border-width: 7px;
+    border-style: solid;
+    border-color: var(--graycolor) transparent transparent  transparent;
+    position: relative;
+    left: 6px;
+    top: 10px;
+  }
+
+  .Listbutton_list__x5zf_{
+    position: relative;
+    white-space: nowrap;
+    margin-left: 15px;
+  }
+
+
+  .Listbutton_unorderedlist__85jIV{
+    background-color: var(--buttonbackground);
+      list-style: none;
+      margin: 0px;
+      padding: 0px;
+      position: absolute;
+      z-index: 1;
+      top: 30px;
+      right: 20px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.3);
+      border-radius: 5px;
+      max-height: 200px;
+      overflow-y: auto;
+  }
+  .Listbutton_listitem__lI0CE{
+    font-family: 'IBM Plex Sans';
+    font-weight: 500;
+    font-size: 14px;
+    height: 15px;
+    color: rgb(135, 138, 140);
+    border-bottom-style: solid;
+    border-block-width: 0.7px;
+    border-bottom-color: #c3bdbda1;
+    padding: 8px 16px 8px 8px;
+    box-sizing: content-box;
+  }
+
+  .Listbutton_list__x5zf_ .Listbutton_unorderedlist__85jIV .Listbutton_selected__ArJUS {
+    color:  var(--brightcolor);
+  }
+
+  .Listbutton_unorderedlist__85jIV :hover {
+    background-color:var(--hoverbrightcolor);
+    color: var(--mainblackcolor);
+    cursor: pointer;
+    border-radius: 5px;
+  }
+
+  .Listbutton_list__x5zf_ :last-child {
+    border: none;
+  }
+
+  .Listbutton_text__hmn3f {
+    display: flex;
+    flex-direction: column;
+  }
+
+/*!****************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[3]!./src/app/file/[fileId]/page.css ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************/
+hr {
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+	border: 0;
+	border-top: 1px solid rgba(0,0,0,.1);
+}
+
+.allPadding {
+    padding: 3em 0;
+  }  
+
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+.header {
+    margin-bottom: 1rem !important;
+    box-sizing: border-box;
+    border-left: 1px solid rgba(0,0,0,.1);
+    border-right: 1px solid rgba(0,0,0,.1);
+}
+
+.toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: .5rem !important;
+  }
+
+.columnView {
+  margin: 0 0.25rem 0.25rem 0;
+  padding: 1.25rem 0 1rem 0;
+  width: 9rem;
+  text-align: center;
+}
+
+  .fileContainer {
+    width: 100%;
+	display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 4px;
+}
+
+.columnView {
+  margin: 0 0.25rem 0.25rem 0;
+  padding: 1.25rem 0 1rem 0;
+  width: 9rem;
+  text-align: center;
+}
+
+.kitteh {
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: inline-block;
+  height: 150px;
+  margin-bottom: 20px;
+  width: 150px;
+}
+/*!******************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/app/components/UI/OutlineButton.module.css ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************/
+.OutlineButton_buttonColor__BC0Lf {
+  position: relative;
+  border: 1px solid #3447c3;
+  color: #3447c3;
+  fill: #3447c3;
+  background-color: #FFFFFF;
+  cursor: pointer;
+}
+
+.OutlineButton_buttonColorInverted__vE0ss {
+  position: relative;
+  border: 1px solid #ffffff;
+  color: #ffffff;
+  fill: #ffffff;
+  background-color: #3447c3;
+  cursor: pointer;
+} 
+
+.OutlineButton_buttonColorInverted__vE0ss:hover {
+  background-color: #4253c3 ; /* Change background color on hover */
+}
+
+.OutlineButton_buttonColorInverted__vE0ss:active {
+  background-color: #5865bf ; /* Change background color on click */
+}
+
+.OutlineButton_buttonColorInverted__vE0ss:disabled {
+  background-color: rgba(132, 132, 132, 1);
+  color: rgba(161, 161, 161, 1);
+  border-color: rgba(118, 118, 118, 0.3);
+  cursor:not-allowed;
+}
+
+.OutlineButton_buttonColor__BC0Lf:hover {
+  background-color: #f5fafd; /* Change background color on hover */
+}
+
+.OutlineButton_buttonColor__BC0Lf:active {
+  background-color: #d6e9f8; /* Change background color on click */
+}
+
+.OutlineButton_buttonText__z12__ {
+  font-family: Noto Sans, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: unset;
+  line-height: 17px;
+  text-transform: unset;
+  min-height: 32px;
+  min-width: 32px;
+  padding: 4px 16px;
+}
+
+.OutlineButton_buttonBorder__c95vt {
+  align-items: center;
+  border-radius: 9999px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  text-align: center;
+  width: auto;
+}
+
+.OutlineButton_buttonColor__BC0Lf:disabled {
+  background-color: rgba(239, 239, 239, 0.3);
+  color: rgba(16, 16, 16, 0.3);
+  border-color: rgba(118, 118, 118, 0.3);
+  cursor:not-allowed;
+}
+
+.OutlineButton_buttonColorDanger__n16VT {
+  position: relative;
+  border: 1px solid #ffffff;
+  color: #ffffff;
+  fill: #ffffff;
+  background-color: #c33434;
+  cursor: pointer;
+} 
+
+.OutlineButton_buttonColorDanger__n16VT:hover {
+  background-color: #c34242 ; /* Change background color on hover */
+}
+
+.OutlineButton_buttonColorDanger__n16VT:active {
+  background-color: #bf5858 ; /* Change background color on click */
+}
+
+.OutlineButton_buttonColorDanger__n16VT:disabled {
+  background-color: rgba(132, 132, 132, 1);
+  color: rgba(161, 161, 161, 1);
+  border-color: rgba(118, 118, 118, 0.3);
+  cursor:not-allowed;
+}
+/*!*****************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/app/components/UI/DocumentIcon.module.css ***!
+  \*****************************************************************************************************************************************************************************************************************************************************************************************/
+.DocumentIcon_iconPos__TYFeW {
+    margin: 0 0.25rem 0.25rem 0;
+  padding: 1.25rem 0 1rem 0;
+  width: 9rem;
+  text-align: center;
+	position: relative;
+	z-index: 1;
+	flex: 0 0 auto;
+	border: 1px solid #eee;
+	cursor: pointer;
+	transition: .3s all ease;
+	box-shadow: 0px 10px 34px -15px rgba(0, 0, 0, 0.14);
+}
+
+.DocumentIcon_hov__C0ME3
+{
+	transition: .3s all ease;
+}
+.DocumentIcon_hov__C0ME3:hover {
+	margin: 10px;
+}
+
+.DocumentIcon_iconPos__TYFeW:hover {
+	box-shadow: 0px 10px 34px -15px rgba(0, 0, 0, 0.24);
+	background-color: rgba(0, 0, 0, 0.05);
+	transition: .3s all ease;
+  }
+
+  .DocumentIcon_iconPos__TYFeW:hover .DocumentIcon_ownerText__DI0k7{
+	opacity: 1;
+	transition: .3s all ease;
+  }
+
+  .DocumentIcon_ownerText__DI0k7 {
+	transition: .3s all ease;
+	opacity: 0;
+	text-align:center;
+	bottom:5%;
+	right:50%;
+	font-size: 10px;
+	position:absolute;
+  }
+
+.DocumentIcon_iconPos__TYFeW:hover .DocumentIcon_btn__MRfIo {
+	opacity: 1;
+    display: inline-block;
+	transition: .3s all ease;
+  }
+
+  .DocumentIcon_iconPos__TYFeW:hover .DocumentIcon_permIcon__XSzcA {
+	opacity: 1;
+	transition: .3s all ease;
+	text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+  }
+
+.DocumentIcon_permIcon__XSzcA {
+	transition: .3s all ease;
+	opacity: 0;
+		 border-radius:3px;
+		 font-weight:900;
+		font-size:8px;
+		color:rgb(240, 255, 248);
+		padding:4px;
+		margin:0.3em;
+		box-shadow: 0 0 20px 10px rgba(255, 255, 255, 0.4);
+		text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+.DocumentIcon_icon__25zhN {
+	display: block;
+	margin: 0 auto 0.75rem auto;
+	width: 4rem;
+	height: 4rem;
+}
+
+.DocumentIcon_fileName__cVY5O {
+    color: #4e5155 !important;
+    width: 100%;
+    display: block;
+    overflow: hidden;
+	text-overflow: ellipsis;
+	-webkit-user-select: none;
+	   -moz-user-select: none;
+	        user-select: none;
+  }
+
+.DocumentIcon_moreIconPos__VrpMG {
+    right: 6px;
+    position: absolute;
+    top: 6px;
+	z-index: 1000;
+  }
+
+  .DocumentIcon_btn__MRfIo {
+    cursor: pointer;
+	opacity: 0;
+    color: #212529;
+    text-align: center;
+    vertical-align: middle;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+            user-select: none;
+    background-color: transparent;
+    border: 1px solid transparent;
+	
+	transition: .3s all ease;
+  }
+
+  .DocumentIcon_btn__MRfIo:hover {
+	outline: 0;
+  box-shadow: 0 0 0 .2rem rgba(0, 82, 170, 0.25);
+	border-radius: 9999px;
+	
+	transition: .3s all ease;
+  }
+
+  .DocumentIcon_dropdown__o17sU {
+	position: absolute;
+    transform: translate3d(-121px, 30px, 0px);
+	top: 0px;
+    left: 0px;
+	z-index: 1000;
+	display: none;
+	float: left;
+	min-width: 10rem;
+	padding: .5rem 0;
+	margin: .125rem 0 0;
+	font-size: 1rem;
+	color: #212529;
+	text-align: left;
+	list-style: none;
+	background-color: #fff;
+	background-clip: padding-box;
+	border: 1px solid rgba(0,0,0,.15);
+	border-radius: .25rem;
+}
+
+.DocumentIcon_dropdownItem__iz0_U {
+	display: block;
+	width: 100%;
+	padding: .25rem 1.5rem;
+	clear: both;
+	font-weight: 400;
+	color: #212529;
+	text-align: inherit;
+	white-space: nowrap;
+	background-color: transparent;
+	border: 0;
+}
+/*!************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/app/components/UI/Wrapper.module.css ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************/
+
+/*!***************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/app/components/UI/RemoveMenu.module.css ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************************/
+.RemoveMenu_grayOut__UATze {
+    pointer-events: auto; /* Enable pointer events */
+    -webkit-user-select:text;
+       -moz-user-select:text;
+            user-select:text;
+    background-color: rgba(28,28,28,.9);
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 100; 
+    overflow: hidden; /* Prevent scrolling within the overlay */
+}
+
+.RemoveMenu_menuPosition__eLgeF {
+    align-items: center;
+    box-sizing: border-box;
+    display: flex;
+    height: 100%;
+    overflow: auto;
+    padding: 75px 30px 20px;
+    pointer-events: none;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 56;
+    justify-content: center;
+}
+
+.RemoveMenu_menuBox__hIOhO {
+    background-color: #ffffff;
+    border: 1px solid #ffffff;
+    border-radius: 4px;
+    box-shadow: 0 2px 20px 0 rgba(0,0,0,.3);
+    margin: auto;
+    pointer-events: auto;
+    z-index: 55;
+}
+
+.RemoveMenu_sectionSize__EEQb_ {
+    box-shadow: 0 2 15px rgba(0,0,0,.3);
+    max-width: 538px;
+    min-width: 410px;
+}
+
+.RemoveMenu_menuHeader__kQXbf {
+    border-bottom: 1px solid #edeff1;
+    border-top-right-radius: 4px;
+    border-top-left-radius: 4px;
+    padding: 16px;
+}
+
+.RemoveMenu_flexHeader__ophHX {
+    display: flex;
+    flex-direction: row;
+}
+
+.RemoveMenu_flexHeaderText__8jVSF
+{
+    color: #1c1c1c;
+    flex: 1 1 100%;
+    width: 100%;
+}
+
+.RemoveMenu_textHeader__Sy9pd {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 24px;
+    color: #1a1a1b;
+    text-align: center;
+    width: 100%;
+    overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.RemoveMenu_flexX__7iniY {
+    flex: 0 0;
+    flex-basis: 16px;
+    justify-content: flex-end;
+}
+
+.RemoveMenu_colorX__lmiFr {
+    color: #878a8c;
+    height: 16px;
+    width: 16px;
+    cursor: pointer;
+}
+
+.RemoveMenu_menuBox__hIOhO > button {
+    background: transparent;
+    border: none;
+    color: inherit;
+    cursor: pointer;
+    padding: initial;
+}
+
+.RemoveMenu_icon__Ys3jk {
+    font-size: 20px;
+    font-weight: 400;
+    height: 20px;
+    line-height: 20px;
+    vertical-align: middle;
+    width: 20px;
+}
+
+.RemoveMenu_menuBody__HqSpv {
+    display: flex;
+    flex-wrap: wrap;
+}
+.RemoveMenu_padding__BSWfi {
+    padding: 16px;
+}
+
+.RemoveMenu_backArrow__pDpeG {
+    flex: 0 0;
+}
+
+.RemoveMenu_txtBox__mnPRA {
+    background-color: white;
+    color: #6b6b6b;
+    border: 1px solid #c5c7c9;
+    box-sizing: border-box;
+    min-height: 48px;
+    margin: 12px;
+    border-radius: 4px;
+    padding: 12px 24px 4px 12px;
+    width: 100%;
+}
+
+.RemoveMenu_txtBox__mnPRA:disabled {
+    color: #EDEFF1;
+    /*color: #c4c0c0;*/
+    border: 1px solid #EDEFF1;
+    cursor: not-allowed;
+}
+
+.RemoveMenu_txtBoxFlex__J0dGh
+{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.RemoveMenu_footer___9Tzn {
+    background-color: #edeff1;
+    border-top: 1px solid #edeff1;
+    display: flex;
+    justify-content: flex-end;
+    padding: 8px;
+    border-bottom-right-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+
+.RemoveMenu_perm__lgEws {
+    display: flex;
+    gap: 2em;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: white;
+    border: 1px solid #c5c7c9;
+    box-sizing: border-box;
+    min-height: 48px;
+    margin: 12px;
+    border-radius: 4px;
+    padding: 12px;
+    width: 100%;
+}
+/*!*************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/app/components/UI/Checkbox.module.css ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************************/
+
+.Checkbox_unchecked__4f6E5 {
+    fill: #878a8c;
+}
+
+.Checkbox_checkbox__rpD_F {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.Checkbox_checkboxWrapper__wQyEb,
+.Checkbox_notificationSettingsAction__RXHoR {
+    align-items: center;
+}
+
+.Checkbox_notificationLabel__o_NwQ,
+.Checkbox_tooltipText__UA3uw {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 18px;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+            user-select: none;
+}
+
+.Checkbox_checkboxWrapper__wQyEb {
+    cursor: pointer;
+    margin-bottom: 8px;
+}
+
+.Checkbox_checkboxWrapperDisabled__0hndI {
+    cursor:not-allowed;
+    margin-bottom: 8px;
+}
+
+.Checkbox_notificationLabel__o_NwQ {
+    margin-left: 8px;
+    margin-right: 4px;
+}
+
+.Checkbox_checkboxIcon__9rRNY svg {
+    width: 16px;
+}
+
+.Checkbox_checkboxIcon__9rRNY path {
+    fill: #3447c3;
+}
+
+.Checkbox_checkboxIconDanger__ep2_m svg {
+    width: 16px;
+}
+
+.Checkbox_checkboxIconDanger__ep2_m path {
+    fill: #c33434;
+}
+/*!************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/app/components/UI/NewMenu.module.css ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************/
+.NewMenu_grayOut__z6sr2 {
+    pointer-events: auto; /* Enable pointer events */
+    -webkit-user-select:text;
+       -moz-user-select:text;
+            user-select:text;
+    background-color: rgba(28,28,28,.9);
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 100; 
+    overflow: hidden; /* Prevent scrolling within the overlay */
+}
+
+.NewMenu_menuPosition__MRBLB {
+    align-items: center;
+    box-sizing: border-box;
+    display: flex;
+    height: 100%;
+    overflow: auto;
+    padding: 75px 30px 20px;
+    pointer-events: none;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 56;
+    justify-content: center;
+}
+
+.NewMenu_menuBox__DbS3b {
+    background-color: #ffffff;
+    border: 1px solid #ffffff;
+    border-radius: 4px;
+    box-shadow: 0 2px 20px 0 rgba(0,0,0,.3);
+    margin: auto;
+    pointer-events: auto;
+    z-index: 55;
+}
+
+.NewMenu_sectionSize__y88S3 {
+    box-shadow: 0 2 15px rgba(0,0,0,.3);
+    max-width: 538px;
+    min-width: 410px;
+}
+
+.NewMenu_menuHeader__nxqbY {
+    border-bottom: 1px solid #edeff1;
+    border-top-right-radius: 4px;
+    border-top-left-radius: 4px;
+    padding: 16px;
+}
+
+.NewMenu_flexHeader__pyFDa {
+    display: flex;
+    flex-direction: row;
+}
+
+.NewMenu_flexHeaderText__McyJd
+{
+    color: #1c1c1c;
+    flex: 1 1 100%;
+    width: 100%;
+}
+
+.NewMenu_textHeader__Gghjz {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 24px;
+    color: #1a1a1b;
+    text-align: center;
+    
+    width: 100%;
+    overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.NewMenu_flexX__OYrWJ {
+    flex: 0 0;
+    flex-basis: 16px;
+    justify-content: flex-end;
+}
+
+.NewMenu_colorX___X_H7 {
+    color: #878a8c;
+    height: 16px;
+    width: 16px;
+    cursor: pointer;
+}
+
+.NewMenu_menuBox__DbS3b > button {
+    background: transparent;
+    border: none;
+    color: inherit;
+    cursor: pointer;
+    padding: initial;
+}
+
+.NewMenu_icon__g9JUo {
+    font-size: 20px;
+    font-weight: 400;
+    height: 20px;
+    line-height: 20px;
+    vertical-align: middle;
+    width: 20px;
+}
+
+.NewMenu_menuBody__ThD_p {
+    display: flex;
+    flex-wrap: wrap;
+}
+.NewMenu_padding__FhRPp {
+    padding: 16px;
+}
+
+.NewMenu_backArrow__sINUF {
+    flex: 0 0;
+}
+
+.NewMenu_txtBox__a8vgI {
+    background-color: white;
+    color: #6b6b6b;
+    border: 1px solid #c5c7c9;
+    box-sizing: border-box;
+    min-height: 48px;
+    margin: 12px;
+    border-radius: 4px;
+    padding: 12px 24px 4px 12px;
+    width: 100%;
+}
+
+.NewMenu_txtBox__a8vgI:disabled {
+    color: #EDEFF1;
+    /*color: #c4c0c0;*/
+    border: 1px solid #EDEFF1;
+    cursor: not-allowed;
+}
+
+.NewMenu_txtBoxFlex__KKDnW
+{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.NewMenu_footer__em_7z {
+    background-color: #edeff1;
+    border-top: 1px solid #edeff1;
+    display: flex;
+    justify-content: flex-end;
+    padding: 8px;
+    border-bottom-right-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+
+.NewMenu_perm__JlAN2 {
+    display: flex;
+    gap: 2em;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: white;
+    border: 1px solid #c5c7c9;
+    box-sizing: border-box;
+    min-height: 48px;
+    margin: 12px;
+    border-radius: 4px;
+    padding: 12px;
+    width: 100%;
+}
+/*!*******************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/app/components/UI/RichTextEditor.module.css ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************************/
+.RichTextEditor_RichTextContainerPosition__lDw_k {
+    position: relative;
+}
+
+.RichTextEditor_RichTextContainerFormatting__MF3Am {
+    border: 1px solid #edeff1;
+    border-radius: 4px;
+    position: relative;
+    background: #ffffff;
+    position: relative;
+    border-radius: 4px;
+}
+
+.RichTextEditor_RichTextToolbar__zTNCn {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 60px;
+    z-index: 8;
+    align-items: center;
+    background-color: #f6f7f8;
+    border-radius: 3px 3px 0 0;
+    border-radius: 4px;
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: nowrap;
+
+    min-height: 50px;
+}
+
+.RichTextEditor_RichTextToolbarPosition__BBz8n {
+    align-items: center;
+    margin-left: 4px;
+    position: relative;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+}
+
+.RichTextEditor_RichTextToolbarItemFlex__KOImL {
+    position: -webkit-sticky;
+    position: sticky;
+    display: flex;
+    justify-content: center;
+}
+
+.RichTextEditor_RichTextToolbarItem__5RGgo {
+    border-radius: 2px;
+    margin: 4px;
+    border-radius: 4px;
+    border: none;
+    color: #878a8c;
+    align-items: center;
+    box-sizing: border-box;
+    display: flex;
+    line-height: 0;
+    outline: none;
+    position: relative;
+    transition: background-color .1s;
+}
+
+.RichTextEditor_RichTextToolbarItem__5RGgo:hover {
+    background-color: #d0d1d2;
+}
+
+.RichTextEditor_RichTextToolbarItem__5RGgo:active {
+    background-color: #c2c3c4;
+}Z
+
+.RichTextEditor_ItemSelected___2lD2 {
+    color: #1a1a1b !important;
+}
+
+.RichTextEditor_miscIcon__FSJP4 {
+    display: inline-block;
+    
+    padding: 0px 0px 8px 8px;
+    height: 20px;
+    width: 20px;
+    font-size: 20px;
+    line-height: 20px;
+    margin-right: 4px;
+}
+
+.RichTextEditor_icon__CC2a1 {
+    font-size: 14px;
+    font-weight: 400;
+    max-height: 20px;
+    line-height: 20px;
+    vertical-align: middle;
+    max-width: 20px;
+}
+
+.RichTextEditor_tooltipPos__GUz_1 {
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    opacity: 0;
+    transition: opacity 0s .5s;
+    visibility: hidden;
+}
+
+.RichTextEditor_tooltipPos__GUz_1:hover{
+    visibility: visible;
+}
+
+.RichTextEditor_tooltip__t2GF5 {
+    left: 50%;
+    position: absolute;
+    bottom: 100%;
+    margin-bottom: 5px;
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 16px;
+        background-color: #000;
+        border-radius: 5px;
+        color: #ffffff;
+        padding: 5px 16px;
+        pointer-events: none;
+        text-align: center;
+        transform: translateX(-50%);
+        white-space: pre;
+        z-index: 100;
+    }
+
+    .RichTextEditor_DraftEditorroot__27JVQ {
+        overflow: auto;
+        position: relative;
+      }
+      
+      .RichTextEditor_DraftEditoreditorContainer___7XnJ {
+        background-color: hsla(0, 0%, 100%, 0);
+        border-left: 0.1px solid transparent;
+        position: relative;
+        z-index: 1;
+      }
+      
+      .RichTextEditor_publicDraftEditorcontent__s3S_O {
+        background-color: #ffffff;
+        border-radius: 4px;
+        color: #1c1c1c;
+        font-family: Noto Sans, Arial, sans-serif;
+        min-height: 122px;
+        overflow: hidden;
+        padding: 8px 16px;
+        resize: vertical;
+        outline: none;
+        -moz-user-select: text;
+             user-select: text;
+        -webkit-user-select: text;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+        min-width:860px;
+        min-height:1080px;
+      }
+
+      .RichTextEditor_publicDraftEditorcontent__s3S_O[contenteditable=true] {
+        -webkit-user-modify: read-write-plaintext-only;
+      }
+/*!********************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/app/components/UI/RichToolbarItem.module.css ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************************/
+.RichToolbarItem_RichTextToolbarItem__8_ae1 {
+  border-radius: 2px;
+  margin: 4px;
+  border-radius: 4px;
+  border: none;
+  color: #878a8c;
+  align-items: center;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  line-height: 0;
+  outline: none;
+  position: relative;
+  transition: background-color 0.1s;
+  width: 100px;
+  height: 30px;
+  background-color: transparent;
+  transition: .3s all ease;
+}
+
+.RichToolbarItem_RichTextToolbarItem__8_ae1:hover {
+  background-color: #d0d1d2;
+  transform-origin: 10% top;
+  transition: .3s all ease;
+}
+
+
+
+.RichToolbarItem_RichTextToolbarItem__8_ae1:active {
+  background-color: #c2c3c4;
+}
+.RichToolbarItem_miscIcon__HFTWA {
+  display: inline-block;
+
+  /*padding: 0px 0px 8px 8px;*/
+  height: 20px;
+  width: 20px;
+  font-size: 20px;
+  line-height: 20px;
+  /*margin-right: 4px;*/
+}
+
+.RichToolbarItem_iconE__rFptG {
+  font-size: 14px;
+  font-weight: 400;
+  max-height: 20px;
+  line-height: 20px;
+  vertical-align: middle;
+  max-width: 20px;
+}
+
+.RichToolbarItem_tooltipPos__jLCve {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  opacity: 0;
+  transition: opacity 0s 0.5s;
+  visibility: hidden;
+}
+
+.RichToolbarItem_tooltipPos__jLCve:hover {
+  visibility: visible;
+}
+
+.RichToolbarItem_tooltip__mRIbt {
+  left: 50%;
+  position: absolute;
+  bottom: 100%;
+  margin-bottom: 5px;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+  background-color: #000;
+  border-radius: 5px;
+  color: #ffffff;
+  padding: 5px 16px;
+  pointer-events: none;
+  text-align: center;
+  transform: translateX(-50%);
+  white-space: pre;
+  z-index: 100;
+}
+

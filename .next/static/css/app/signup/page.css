@@ -1,0 +1,269 @@
+/*!*************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/app/components/UI/Checkbox.module.css ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************************/
+
+.Checkbox_unchecked__4f6E5 {
+    fill: #878a8c;
+}
+
+.Checkbox_checkbox__rpD_F {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.Checkbox_checkboxWrapper__wQyEb,
+.Checkbox_notificationSettingsAction__RXHoR {
+    align-items: center;
+}
+
+.Checkbox_notificationLabel__o_NwQ,
+.Checkbox_tooltipText__UA3uw {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 18px;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+            user-select: none;
+}
+
+.Checkbox_checkboxWrapper__wQyEb {
+    cursor: pointer;
+    margin-bottom: 8px;
+}
+
+.Checkbox_checkboxWrapperDisabled__0hndI {
+    cursor:not-allowed;
+    margin-bottom: 8px;
+}
+
+.Checkbox_notificationLabel__o_NwQ {
+    margin-left: 8px;
+    margin-right: 4px;
+}
+
+.Checkbox_checkboxIcon__9rRNY svg {
+    width: 16px;
+}
+
+.Checkbox_checkboxIcon__9rRNY path {
+    fill: #3447c3;
+}
+
+.Checkbox_checkboxIconDanger__ep2_m svg {
+    width: 16px;
+}
+
+.Checkbox_checkboxIconDanger__ep2_m path {
+    fill: #c33434;
+}
+/*!******************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/app/components/UI/OutlineButton.module.css ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************/
+.OutlineButton_buttonColor__BC0Lf {
+  position: relative;
+  border: 1px solid #3447c3;
+  color: #3447c3;
+  fill: #3447c3;
+  background-color: #FFFFFF;
+  cursor: pointer;
+}
+
+.OutlineButton_buttonColorInverted__vE0ss {
+  position: relative;
+  border: 1px solid #ffffff;
+  color: #ffffff;
+  fill: #ffffff;
+  background-color: #3447c3;
+  cursor: pointer;
+} 
+
+.OutlineButton_buttonColorInverted__vE0ss:hover {
+  background-color: #4253c3 ; /* Change background color on hover */
+}
+
+.OutlineButton_buttonColorInverted__vE0ss:active {
+  background-color: #5865bf ; /* Change background color on click */
+}
+
+.OutlineButton_buttonColorInverted__vE0ss:disabled {
+  background-color: rgba(132, 132, 132, 1);
+  color: rgba(161, 161, 161, 1);
+  border-color: rgba(118, 118, 118, 0.3);
+  cursor:not-allowed;
+}
+
+.OutlineButton_buttonColor__BC0Lf:hover {
+  background-color: #f5fafd; /* Change background color on hover */
+}
+
+.OutlineButton_buttonColor__BC0Lf:active {
+  background-color: #d6e9f8; /* Change background color on click */
+}
+
+.OutlineButton_buttonText__z12__ {
+  font-family: Noto Sans, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: unset;
+  line-height: 17px;
+  text-transform: unset;
+  min-height: 32px;
+  min-width: 32px;
+  padding: 4px 16px;
+}
+
+.OutlineButton_buttonBorder__c95vt {
+  align-items: center;
+  border-radius: 9999px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  text-align: center;
+  width: auto;
+}
+
+.OutlineButton_buttonColor__BC0Lf:disabled {
+  background-color: rgba(239, 239, 239, 0.3);
+  color: rgba(16, 16, 16, 0.3);
+  border-color: rgba(118, 118, 118, 0.3);
+  cursor:not-allowed;
+}
+
+.OutlineButton_buttonColorDanger__n16VT {
+  position: relative;
+  border: 1px solid #ffffff;
+  color: #ffffff;
+  fill: #ffffff;
+  background-color: #c33434;
+  cursor: pointer;
+} 
+
+.OutlineButton_buttonColorDanger__n16VT:hover {
+  background-color: #c34242 ; /* Change background color on hover */
+}
+
+.OutlineButton_buttonColorDanger__n16VT:active {
+  background-color: #bf5858 ; /* Change background color on click */
+}
+
+.OutlineButton_buttonColorDanger__n16VT:disabled {
+  background-color: rgba(132, 132, 132, 1);
+  color: rgba(161, 161, 161, 1);
+  border-color: rgba(118, 118, 118, 0.3);
+  cursor:not-allowed;
+}
+/*!*********************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[3]!./src/app/signup/page.css ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************/
+
+.allPadding {
+  padding: 3em 0;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.positioning {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+  justify-content: center !important;
+}
+
+.signheader {
+  text-align: center !important;
+  margin-bottom: 3rem !important;
+  flex: 0 0 50%;
+  max-width: 50%;
+}
+
+h2 {
+    font-size: 28px;
+  color: #000;
+  font-weight: 400;
+}
+
+.loginStyle {
+  position: relative;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0px 10px 34px -15px rgba(0, 0, 0, 0.24);
+  padding: 4rem !important;
+}
+
+h3 {
+  font-weight: 300;
+  font-size: 24px;
+  margin-bottom: 1.5rem !important;
+  color: #000;
+}
+
+.inputBoxFlex {
+  position: relative;
+  margin-bottom: 1rem;
+  transition: .3s all ease;
+}
+
+.inputBoxStyle {
+  height: 48px;
+  width: 100%;
+  background: #fff;
+  color: #000;
+  font-size: 16px;
+  border-radius: 5px;
+  box-shadow: none;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding-left: 60px;
+  border-top-left-radius: 0.25rem !important;
+  border-bottom-left-radius: 0.25rem !important;
+  transition: .3s all ease;
+}
+
+.inputBoxStyle:focus {
+    outline: none;
+    transition: .3s all ease;
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+
+.icon {
+  position: absolute;
+  width: 48px;
+  height: 48px;
+  background: #3447c3;
+  fill: #fff;
+  font-size: 20px;
+  border-radius: 5px 0 0 5px;
+}
+
+.loginIcon {
+  align-items: center !important;
+  justify-content: center !important;
+  display: flex !important;
+}
+
+.loginBottomFlex {
+	display: flex !important;
+    align-items: center !important;
+}
+
+  .bottom {
+    margin-top: 1.5rem !important;
+    text-align: center !important;
+  }
+  
+  a {
+	transition: .3s all ease;
+	color: #3447c3;
+    text-decoration: none;
+}
+
+    a:hover {
+        transition: .3s all ease;
+        color: #34c1c3;
+        font-size:20px;
+    }

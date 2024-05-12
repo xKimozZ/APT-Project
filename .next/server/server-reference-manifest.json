@@ -1,0 +1,26 @@
+{
+  "node": {
+    "aa2f9b7a4c6317a3c97937b5237778a2d8a6993f": {
+      "workers": {
+        "app/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5CKimozZ%5C%5CDesktop%5C%5Captproj%5C%5Cproject%5C%5Csrc%5C%5Capp%5C%5Cutils%5C%5CgetCookies.js%22%2C%5B%22default%22%5D%5D%5D&__client_imported__=true!",
+        "app/home/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5CKimozZ%5C%5CDesktop%5C%5Captproj%5C%5Cproject%5C%5Csrc%5C%5Capp%5C%5Cutils%5C%5CdeleteCookies.js%22%2C%5B%22default%22%5D%5D%2C%5B%22C%3A%5C%5CUsers%5C%5CKimozZ%5C%5CDesktop%5C%5Captproj%5C%5Cproject%5C%5Csrc%5C%5Capp%5C%5Cutils%5C%5CgetCookies.js%22%2C%5B%22default%22%5D%5D%5D&__client_imported__=true!",
+        "app/file/[fileId]/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5CKimozZ%5C%5CDesktop%5C%5Captproj%5C%5Cproject%5C%5Csrc%5C%5Capp%5C%5Cutils%5C%5CgetCookies.js%22%2C%5B%22default%22%5D%5D%5D&__client_imported__=true!"
+      },
+      "layer": {
+        "app/page": "action-browser",
+        "app/home/page": "action-browser",
+        "app/file/[fileId]/page": "action-browser"
+      }
+    },
+    "9d94052d93aacbef5baaa41dba498897ae7db03c": {
+      "workers": {
+        "app/home/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5CKimozZ%5C%5CDesktop%5C%5Captproj%5C%5Cproject%5C%5Csrc%5C%5Capp%5C%5Cutils%5C%5CdeleteCookies.js%22%2C%5B%22default%22%5D%5D%2C%5B%22C%3A%5C%5CUsers%5C%5CKimozZ%5C%5CDesktop%5C%5Captproj%5C%5Cproject%5C%5Csrc%5C%5Capp%5C%5Cutils%5C%5CgetCookies.js%22%2C%5B%22default%22%5D%5D%5D&__client_imported__=true!"
+      },
+      "layer": {
+        "app/home/page": "action-browser"
+      }
+    }
+  },
+  "edge": {},
+  "encryptionKey": "Vbp4quDLZGwzHhDNtyYLHgyyyR1E+6O1r0anWaLQ9cs="
+}
