@@ -1,16 +1,20 @@
 "use client";
 import React, {useState, useEffect, useMemo} from "react";
+import apiHandler from "@/app/utils/apiHandler.js"
 import { useRouter } from "next/navigation";
 import "./page.css"
 import deleteCookies from "@/app/utils/deleteCookies";
+import getCookies from "@/app/utils/getCookies";
 import OutlineButton from "../components/UI/OutlineButton";
 import DocumentIcon from "../components/UI/DocumentIcon";
 import WrapperNew from "../components/UI/WrapperNew";
+import { TailSpin } from "react-loader-spinner";
 
 function FileExplorer() {
   const router = useRouter();
     const [token, setToken] = useState("");
-    const [username, setMyUsername] = useState("tester");
+    const [username, setUsername] = useState("tester");
+    const [loading, setLoading] = useState(true);
     const [newMenuOn, setNewMenuOn] = useState(false);
     const [displayOthers, setDisplayOthers] = useState(true);
     const [filesArray, setFilesArray] = useState([
@@ -308,13 +312,21 @@ function FileExplorer() {
     useEffect(() => {
       async function cookiesfn() {
         const cookies = await getCookies();
-        if(cookies !== null && cookies.access_token&&cookies.username){
-          setToken(cookies.access_token);
-          setUserName(cookies.username);
-        } else {
-          router.push("/login")
+        
+        try {
+          if (cookies !== null && cookies.access_token && cookies.username) {
+            const validate = await apiHandler(`/validate-token`, "GET", "", cookies.access_token);
+            //console.log(validate);
+            setToken(cookies.access_token);
+            setUsername(cookies.username);
+            setLoading(false);
+          } else {
+            router.push("/login");
+          }
+        } catch(error) {
+          console.log(error);
+          handleLogout();
         }
-  
       }
       cookiesfn();
     }, []);
@@ -325,8 +337,8 @@ function FileExplorer() {
           };
       try {
     
-        const files = await handler(`/get-files`, "GET", bodyData, token);//todo change api endpoint according to sortBy state
-        setFilesArray(files);
+        //const files = await handler(`/get-files`, "GET", bodyData, token);//todo change api endpoint according to sortBy state
+        //setFilesArray(files);
       
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -429,6 +441,7 @@ function FileExplorer() {
       }
 
       const handleLogout = async () => {
+        setLoading(true);
         await deleteCookies();
         router.push("/login")
       }
@@ -441,12 +454,25 @@ function FileExplorer() {
         }
       }, [displayOthers, filesArray, username]);
 
-  return (
+  return ( 
+    <>
+    {loading ? <div style={{display:"flex",flexDirection:"column",width:"100%",alignItems:"center",
+    justifyContent:"center", gap:"2em",margin:"0 auto",  position:"absolute",top:"35%"}}>
+      <TailSpin
+      visible={true}
+      height="160"
+      width="160"
+      color="#3447c3"
+      ariaLabel="tail-spin-loading"
+      radius="0.5"
+      wrapperStyle={{display:"flex",width:"100%",alignItems:"center", justifyContent:"center",}}
+      wrapperClass=""
+      /></div> :
     <div className="allPadding container">
       <div className="header">
         <hr style={{ margin: "0" }} />
         <div className="toolbar">
-          <div style={{ display: "flex", gap: "1em" }}>
+          <div style={{ display: "flex", gap: "1em", alignItems:"center" }}>
             <OutlineButton
               isDanger={true}
               btnClick={handleLogout}
@@ -496,6 +522,7 @@ function FileExplorer() {
               </svg>
               New Document
             </OutlineButton>
+             Signed in as {username}
           </div>
           <WrapperNew
             onClose={() => setNewMenuOn(false)}
@@ -578,7 +605,7 @@ function FileExplorer() {
           </span>
         )}
       </div>
-    </div>
+    </div>}</>
   );
 }
 

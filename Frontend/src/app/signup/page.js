@@ -1,5 +1,6 @@
 "use client";
 import React, {useState, useEffect} from "react";
+import apiHandler from "@/app/utils/apiHandler.js"
 import { useRouter } from "next/navigation";
 import Checkbox from "../components/UI/Checkbox";
 import OutlineButton from "../components/UI/OutlineButton";
@@ -59,20 +60,23 @@ function Signup() {
       return;
     }
 
-      await loginSubmit(formData);
+      await loginSubmit();
   }
 
   const loginSubmit = async () => {
     try {
-      bodyData = {
+      const bodyData = {
         username: username,
         password: password,
       }
-      const response = await apiHandler("/signup", "POST", bodyData);
+      var response = await apiHandler("/signup", "POST", bodyData);
+      response = await apiHandler("/login", "POST", bodyData);
+      console.log(response);
+      router.push("/home");
     } catch (error) {
-      console.log("Unknown Error");
+      console.log(error);
     }
-    router.push("/home");
+    
   };
 
   function getErrorMessage() {
