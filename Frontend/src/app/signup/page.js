@@ -3,6 +3,9 @@ import React, {useState, useEffect} from "react";
 import apiHandler from "@/app/utils/apiHandler.js"
 import { useRouter } from "next/navigation";
 import Checkbox from "../components/UI/Checkbox";
+
+import storeCookies from "../utils/storeCookies.js";
+import deleteCookies from "../utils/deleteCookies.js";
 import OutlineButton from "../components/UI/OutlineButton";
 import styles from "./page.module.css";
 
@@ -68,11 +71,13 @@ function Signup() {
       const bodyData = {
         username: username,
         password: password,
+        remember: false,
       }
-      var response = await apiHandler("/signup", "POST", bodyData);
+      var ok = await apiHandler("/signup", "POST", bodyData);
+      const response = await apiHandler("/login", "POST", bodyData);
+      
       await deleteCookies();
       await storeCookies(response);
-      response = await apiHandler("/login", "POST", bodyData);
       console.log(response);
       router.push("/home");
     } catch (error) {

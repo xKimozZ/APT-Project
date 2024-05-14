@@ -19,9 +19,9 @@ function DocumentIcon({
   changeFunction,
   group = [{
     username: "user1",
-    editing: true,
-    renaming: true,
-    deleting: true,
+    canEdit: true,
+    canRename: true,
+    canDelete: true,
   }],
 }) {
   const router = useRouter();
@@ -32,6 +32,7 @@ function DocumentIcon({
   const [isOwner, setIsOwner] = useState(false);
 
   useEffect(() => {
+    console.log(group);
     if (username === owner) {
       setCanDelete(true);
       setIsOwner(true);
@@ -42,9 +43,9 @@ function DocumentIcon({
         (member) => member.username === username
       );
       if (userPermissions) {
-        setCanDelete(userPermissions.deleting || false);
-        setCanRename(userPermissions.renaming || false);
-        setCanEdit(userPermissions.editing || false);
+        setCanDelete(userPermissions.canDelete || false);
+        setCanRename(userPermissions.canRename || false);
+        setCanEdit(userPermissions.canEdit || false);
       } else {
         setCanDelete(false);
         setCanRename(false);

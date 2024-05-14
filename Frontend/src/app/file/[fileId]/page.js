@@ -5,6 +5,7 @@ import styles from "./page.module.css"
 import kitteh from "@/app/assets/kitteh.png"
 import OutlineButton from "@/app/components/UI/OutlineButton";
 import DocumentIcon from "@/app/components/UI/DocumentIcon";
+import deleteCookies from "@/app/utils/deleteCookies";
 import getCookies from "@/app/utils/getCookies";
 import apiHandler from "@/app/utils/apiHandler.js"
 import { TailSpin } from "react-loader-spinner";
@@ -48,6 +49,12 @@ function Editor({params : {fileId}}) {
   
       return () => clearTimeout(delay);
     }, []);
+
+    const handleLogout = async () => {
+      setLoading(true);
+      await deleteCookies();
+      router.push("/login")
+    }
 
     async function getFiles() {
         let bodyData = {

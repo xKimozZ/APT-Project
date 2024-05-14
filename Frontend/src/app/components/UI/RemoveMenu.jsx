@@ -2,10 +2,11 @@ import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 import styles from "./RemoveMenu.module.css";
 import OutlineButton from "@/app/components/UI/OutlineButton";
-import handler from "@/app/utils/apiHandler.js";
+import apiHandler from "@/app/utils/apiHandler.js";
 import getCookies from "@/app/utils/getCookies";
 import Checkbox from "./Checkbox";
-import Drop from "./Listbutton"
+import DropdownMenu from "./DropdownMenu"
+import { TailSpin } from "react-loader-spinner";
 
 /**
  * Component for rendering the grayed-out modal menu for adding removal reason
@@ -38,6 +39,8 @@ function RemoveMenu({ sharing ,onClose, removeFunction, permissionFunction, chan
   const [renaming, setRenaming] = useState(false);
   const [deleting, setDeleting] = useState(false);
   const [username, setUsername] = useState("");
+  const [group, setGroup] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (viewing === false) {
@@ -46,6 +49,52 @@ function RemoveMenu({ sharing ,onClose, removeFunction, permissionFunction, chan
       setRenaming(false);
     }
   }, [viewing]);
+
+  useEffect(() => {
+    setLoading(true);
+    const timeout = setTimeout(() => {
+      
+      let currentPermissions= group.filter(permission => permission.username === username);
+      if ( currentPermissions.length > 0 ) {
+        console.log(currentPermissions);
+        setDeleting(currentPermissions[0].canDelete);
+        setEditing(currentPermissions[0].canEdit);
+        setRenaming(currentPermissions[0].canRename);
+        setViewing(currentPermissions[0].canView);
+      }
+      else
+      {
+        setViewing(false);
+        setDeleting(false);
+        setEditing(false);
+        setRenaming(false);
+      }
+      setLoading(false);
+  }, 1000);
+  
+  return () => clearTimeout(timeout);
+  
+  }, [username]);
+
+  async function getPermissions() {
+    const cookies = await getCookies();
+    try {
+      setLoading(true);
+      const validate = await apiHandler(
+        `/documents/get-permissions/${fileId}`,
+        "GET",
+        "",
+        cookies.access_token
+      );
+      console.log(validate);
+      //const files = await handler(`/get-files`, "GET", bodyData, token);//todo change api endpoint according to sortBy state
+      setGroup(validate);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    } finally {
+      setLoading(false);
+    }
+  }
   
 
   function handleDispInputChange(event) {
@@ -69,6 +118,15 @@ function RemoveMenu({ sharing ,onClose, removeFunction, permissionFunction, chan
   const handleSave = () => {
     if (title.length === 0)
       return;
+
+    if (isOwner && !perm && sharing) {
+      // Prompt the user for confirmation
+      const confirmed = window.confirm("You have turned off sharing options. Are you sure you want to save? This will remove permissions for every user.");
+      if (!confirmed) {
+        return; // User cancelled, do nothing
+      }
+    }
+
       changeFunction(fileId,title,perm);
       onClose();
   };
@@ -79,7 +137,11 @@ function RemoveMenu({ sharing ,onClose, removeFunction, permissionFunction, chan
   };
 
   const handleUserSave = () => {
-    permissionFunction(fileId,username,viewing, editing, renaming, deleting);
+      const confirmed = window.confirm(`You are about to change permissions for ${username}. Are you sure?`);
+      if (!confirmed) {
+        return; // User cancelled, do nothing
+      }
+      permissionFunction(fileId,username,viewing, editing, renaming, deleting);
 };
 
   //Prevent menu from being closed
@@ -114,6 +176,22 @@ function RemoveMenu({ sharing ,onClose, removeFunction, permissionFunction, chan
         </div>
         {perm && (
           <div className={styles.perm}>
+            <div style={{ width: "100%"}}>
+              <div style={{ display:"flex", flexDirection:"row",justifyContent:"center", alignItems:"center"}}>
+              <DropdownMenu choose={setUsername} list={group.map(permission => permission.username)} />
+            <TailSpin
+            visible={loading}
+            height="20"
+            width="20"
+            color="#3447c3"
+            ariaLabel="tail-spin-loading"
+            radius="0.5"
+            wrapperStyle={{
+              marginLeft:"12px"
+            }}
+            wrapperClass=""
+          />
+              </div>
             <div style={{ display:"flex", width: "100%", justifyContent: "center" }}>
               <input
                 disabled={willDelete}
@@ -126,10 +204,13 @@ function RemoveMenu({ sharing ,onClose, removeFunction, permissionFunction, chan
                 style={{ padding: "10px", justifySelf: "center", width:"60%", marginBottom:"-1em" }}
               />
             </div>
+            </div>
             <div style={{ display:"flex", width: "100%", marginTop:"0",justifyContent: "center" }}>
+              
               <OutlineButton
                 isInverted={true}
                 isFocusable={true}
+                isDisabled={username.length==0}
                 btnClick={handleUserSave}
               >
                 <svg
@@ -152,7 +233,7 @@ function RemoveMenu({ sharing ,onClose, removeFunction, permissionFunction, chan
               </OutlineButton>
             </div>
             
-
+            
             <Checkbox
               isChecked={viewing}
               onToggle={() => {
@@ -252,7 +333,9 @@ function RemoveMenu({ sharing ,onClose, removeFunction, permissionFunction, chan
                   width: "100%",
                 }}
               >
-                <OutlineButton isFocusable={true} isInverted={true} btnClick={() => setDialog(!dialog)} isDisabled={willDelete || !isOwner}>
+                <OutlineButton isFocusable={true} isInverted={true}
+                btnClick={() => {setDialog(!dialog); getPermissions()}}
+                isDisabled={willDelete || !isOwner}>
                   <svg
                   style={{marginRight:"1em"}}
                     aria-hidden="true"

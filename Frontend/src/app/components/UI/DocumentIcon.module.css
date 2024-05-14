@@ -41,11 +41,15 @@
   .ownerText {
 	transition: .3s all ease;
 	opacity: 0;
-	text-align:center;
+	text-align:left;
 	bottom:5%;
-	right:50%;
 	font-size: 10px;
-	position:absolute;
+	position:relative;
+	width:80%;
+	margin-left:8px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
   }
 
 .iconPos:hover .btn, .hov:focus .btn {
@@ -69,7 +73,7 @@
 		color:rgb(240, 255, 248);
 		padding:4px;
 		margin:0.3em;
-		box-shadow: 0 0 20px 10px rgba(255, 255, 255, 0.4);
+		/*box-shadow: 0 0 20px 10px rgba(255, 255, 255, 0.4);*/
 		text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
 }
 
@@ -85,6 +89,9 @@
     width: 100%;
     display: block;
     overflow: hidden;
+	white-space: nowrap;
+	padding-left: 4px;
+	padding-right: 4px;
 	text-overflow: ellipsis;
 	user-select: none;
   }

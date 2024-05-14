@@ -5,7 +5,7 @@ import OutlineButton from "@/app/components/UI/OutlineButton";
 import handler from "@/app/utils/apiHandler.js";
 import getCookies from "@/app/utils/getCookies";
 import Checkbox from "./Checkbox";
-import Drop from "./Listbutton"
+import Drop from "./DropdownMenu"
 
 /**
  * Component for rendering the grayed-out modal menu for adding removal reason
