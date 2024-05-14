@@ -2,7 +2,8 @@
 
 async function handler(url, method, body, token="") {
     try {
-      const base_url = 'http://localhost:8081';
+      // Use your device IP (check network settings)
+      const base_url = 'http://192.168.1.11:8081';
       const headers = token !== "" ? {"Content-Type": "application/json","Authorization": `Bearer ${token}`} : {"Content-Type": "application/json"}
 
   

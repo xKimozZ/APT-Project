@@ -11,6 +11,7 @@ import apiHandler from "@/app/utils/apiHandler.js"
 import { TailSpin } from "react-loader-spinner";
 import WrapperNew from "@/app/components/UI/WrapperNew";
 import RichTextEditor from "@/app/components/UI/RichTextEditor";
+import TextEditor from "@/app/components/UI/TextEditor";
 
 function Editor({params : {fileId}}) {
   const router = useRouter();
@@ -183,7 +184,7 @@ function Editor({params : {fileId}}) {
             </svg>
             New Document
           </OutlineButton>
-          {editing ? "Editing" : "Viewing"} as {username}
+          {editing ? "Editing" : "Viewing"} as <strong>{username}</strong>
           </div>
           
           <WrapperNew
@@ -201,11 +202,15 @@ function Editor({params : {fileId}}) {
       </div>
       <div className={styles.fileContainer}>
         {file && viewing ? (
+          <>
+          <div style={{ minHeight: "16px"}}></div>
           <div
             style={{ display: "flex", width: "100%", justifyContent: "center" }}
           >
-            <RichTextEditor setContent={() => {}} setRawContent={() => {}} />
-          </div>
+            {/*<RichTextEditor setContent={() => {}} setRawContent={() => {}} />*/}
+            
+            <TextEditor documentId={fileId} readOnly={!editing}/>
+          </div></>
         ) : (
           <div
             style={{
