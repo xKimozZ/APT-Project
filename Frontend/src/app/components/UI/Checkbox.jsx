@@ -2,25 +2,6 @@ import React, { useState } from 'react';
 import styles from "./Checkbox.module.css"
 
 
-/**
- * Checkbox component for toggling a boolean value.
- * @component
- * @param {string} label - The label text for the checkbox.
- * @param {boolean} isChecked - The initial checked state of the checkbox.
- * @param {Function} onToggle - The function to call when the checkbox is toggled.
- * @param {boolean} isDisabled - Indicates if the checkbox is disabled.
- * @returns {JSX.Element} The rendered Checkbox component.
- *
- * @example
- * // Renders a Checkbox component with a label and initial checked state.
- * <Checkbox
- *   label="Enable Notifications"
- *   isChecked={true}
- *   onToggle={(isChecked) => console.log('Checkbox toggled:', isChecked)}
- *   isDisabled={false}
- * />
- */
-
 const Checkbox = ({ label, isChecked = false, onToggle, isDisabled= false, isDanger=false }) => {
   const [status, setStatus] = useState(isChecked);
 

@@ -8,29 +8,6 @@ import RichToolbarItem from "./RichToolbarItem";
 const DEBOUNCE_DELAY = 600;
 
 
-/**
- * RichTextEditor component for creating and formatting rich text content.
- * 
- * @component
- * @param {Array} mediaArray - An array containing media items (such as images or videos) added to the editor.
- * @param {Function} setMediaArray - A function to update the mediaArray state when new media items are added or removed.
- * @param {string} content - The HTML content of the editor. This prop allows initializing the editor with existing content.
- * @param {Function} setContent - A function to update the content state when the content of the editor changes.
- * @param {Object} rawContent - The raw content state of the editor, which can be used to preserve and restore the editor's state.
- * @param {Function} setRawContent - A function to update the rawContent state when the raw content of the editor changes.
- * @returns {JSX.Element} The rendered RichTextEditor component.
- * 
- * @example
- * // Renders a RichTextEditor component with initial content and media items.
- * <RichTextEditor
- *   mediaArray={[{ type: 'image', src: 'example.jpg' }]}
- *   setMediaArray={(newMediaArray) => console.log('Media array updated:', newMediaArray)}
- *   content="<p>This is some <strong>rich</strong> text content.</p>"
- *   setContent={(newContent) => console.log('Content updated:', newContent)}
- *   rawContent={{ entityMap: {}, blocks: [{ type: 'unstyled', text: 'Example content' }] }}
- *   setRawContent={(newRawContent) => console.log('Raw content updated:', newRawContent)}
- * />
- */
 
 
 function RichTextEditor({ mediaArray, setMediaArray, content, setContent, rawContent, setRawContent }) {

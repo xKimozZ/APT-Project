@@ -1,27 +1,4 @@
-/**
- * Component for handling fetch calls.
- * @function
- * @async
- * @param   {string} url   The endpoint the request should be sent to [Required]
- * @param   {string} method   The method of the request GET,PUT,etc.. [Required]
- * @param   {string} body   The body of the request [Required (if not GET or DELETE)]
- * @returns {JSON} The response pasrsed as a json.
- *
- * @example
- * //gets the data at settings/emails endpoint
- * const url = /settings/emails
- * const method = GET
- * return (handler(url, method));
- * @example
- * //post data to settings/notifications endpoint
- * const url = /settings/notifications
- * const method = Post
- * const body = {          
- *        mentions: true,
-          comments: false
-        }
- * return (handler(url, method, body));
- */
+
 
 async function handler(url, method, body, token="") {
     try {

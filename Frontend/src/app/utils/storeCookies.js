@@ -1,18 +1,7 @@
   "use server"
   import { cookies } from 'next/headers';
 
-  /**
-   * Function to store cookies.
-   * @function
-   * @async
-   * @param   {Object} cookieData   The token to be stored in the cookies [Required]
-   *
-   * @example
-   * //store cookies
-   * token = "token"
-   * storeCookies(token);
-   */
-
+  
   async function storeCookies(cookieData) {
     // Calculate the expiration time based on the provided token expiration date
     const expirationDate = new Date(cookieData.token_expiration_date);

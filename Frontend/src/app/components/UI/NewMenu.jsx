@@ -7,24 +7,6 @@ import getCookies from "@/app/utils/getCookies";
 import Checkbox from "./Checkbox";
 import Drop from "./DropdownMenu"
 
-/**
- * Component for rendering the grayed-out modal menu for adding removal reason
- * @component
- * @param   {Function} onClose       Function to toggle the menu
- * @param   {Function} removeFunction     Function to remove post
- * @param   {string} title     Post title
- * @param   {string} postId     Post id
- * @param   {string} communityName     Community Name
- * @returns {JSX.Element}            The rendered RemoveMenu component.
- *
- * @example
- * // Note: This component relies on its wrapper to set it to be visible
- * // Therefore, if you somehow set the menu to be visible but set the passed down functions as such
- * // You wont be able to exit the menu
- * const onClose = () => { console.log("Menu toggle attempt") };
- * const removeFunction = () => { console.log("Remove attempt") };
- * <RemoveMenu  onClose={onClose} removeFunction={changeTime} />
- */
 function NewMenu({ onClose, newFunction }) {
   const maxChars = 20;
   const [title, setTitle] = useState("New Document");
