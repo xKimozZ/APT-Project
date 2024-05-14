@@ -34,6 +34,7 @@ public class DocumentController {
         document.setTitle(request.getTitle());
         document.setOwner(request.getUsername());
         document.setContent("");
+      //  document.setPublic(false);
         Document createdDocument = documentService.createDocument(document);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdDocument);
     }
@@ -137,7 +138,8 @@ public class DocumentController {
             String username = claims.getSubject();
 
             // Call the service method to apply the file changes
-            if (documentService.confirmFileChanges(request.getFileId(), request.getTitle(), request.isSharingOptionsOn(), username)) {
+            if (documentService.confirmFileChanges(request.getFileId(), request.getTitle(),
+                    request.isSharingOptionsOn(), username, request.isPublicViewingOn())) {
                 return ResponseEntity.ok().body("{\"message\": \"File changes confirmed for " + request.getFileId() + "\"}");
             } else {
                 return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("You are not allowed to confirm changes for this file");

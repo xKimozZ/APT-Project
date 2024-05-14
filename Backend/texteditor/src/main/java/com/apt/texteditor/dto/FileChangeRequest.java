@@ -4,16 +4,18 @@ public class FileChangeRequest {
     private String fileId;
     private String title;
     private boolean sharingOptionsOn;
+    private boolean publicViewingOn;
 
     // Constructors, getters, and setters
 
     public FileChangeRequest() {
     }
 
-    public FileChangeRequest(String fileId, String title, boolean sharingOptionsOn) {
+    public FileChangeRequest(String fileId, String title, boolean sharingOptionsOn, boolean publicViewingOn) {
         this.fileId = fileId;
         this.title = title;
         this.sharingOptionsOn = sharingOptionsOn;
+        this.publicViewingOn = publicViewingOn;
     }
 
     public String getFileId() {
@@ -38,5 +40,13 @@ public class FileChangeRequest {
 
     public void setSharingOptionsOn(boolean sharingOptionsOn) {
         this.sharingOptionsOn = sharingOptionsOn;
+    }
+
+    public boolean isPublicViewingOn() {
+        return publicViewingOn;
+    }
+
+    public void setPublicViewingOn(boolean publicViewingOn) {
+        this.publicViewingOn = publicViewingOn;
     }
 }

@@ -450,11 +450,12 @@ function FileExplorer() {
     getFiles();
   }, [token]);
 
-  async function confirmFileChanges(fileId, title, sharingOptionsOn) {
+  async function confirmFileChanges(fileId, title, sharingOptionsOn, isPublic) {
     let bodyData = {
       title: title,
       fileId: fileId,
-      isSharingOptionsOn: sharingOptionsOn,
+      sharingOptionsOn: sharingOptionsOn,
+      publicViewingOn: isPublic,
     };
     console.log(bodyData);
     if (!await validateSession())
@@ -464,7 +465,10 @@ function FileExplorer() {
       console.log(sent);
       getFiles();
     } catch (error) {
+      if (error.message = "401")
       window.alert("You are not allowed to rename this document!");
+     else
+     window.alert("Internal server error!");
       console.error("Error fetching data:", error);
     }
   }
@@ -660,7 +664,8 @@ function FileExplorer() {
                   owner={file.owner}
                   group={file.groupPermissions}
                   fileId={file.id}
-                  sharing={file.groupPermissions.length !== 0}
+                  sharing={file.groupPermissions.length !== 0 || file.sharingOptionsOn}
+                  isPublic={file.publicViewingOn}
                 />
               ))
             ) : (

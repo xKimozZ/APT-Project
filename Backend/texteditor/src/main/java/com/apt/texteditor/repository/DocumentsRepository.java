@@ -10,7 +10,7 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface DocumentsRepository extends MongoRepository<Document, String> {
-    @Query("{$or:[{'owner': ?0}, {'groupPermissions.username': ?0, 'groupPermissions.canView': true}]}")
+    @Query("{$or:[{'owner': ?0}, {'groupPermissions.username': ?0, 'groupPermissions.canView': true}, {'publicViewingOn': true}]}")
     List<Document> findByOwnerOrGroupPermissionsUsername(@Param("username") String username);
 
 }

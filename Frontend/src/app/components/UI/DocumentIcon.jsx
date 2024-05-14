@@ -1,6 +1,5 @@
 import React from "react";
 import Image from "next/image";
-import binp from"../../assets/binimage.png"
 import { useState,useEffect } from 'react';
 import styles from "./DocumentIcon.module.css";
 import apiHandler from "../../utils/apiHandler";
@@ -23,6 +22,7 @@ function DocumentIcon({
     canRename: true,
     canDelete: true,
   }],
+  isPublic = false,
 }) {
   const router = useRouter();
   const [menuVisible, setMenuVisible] = useState(false);
@@ -75,6 +75,9 @@ function DocumentIcon({
       case "O":
         color = "rgb(170, 0, 255)";
         break;
+      case "P":
+      color = "rgb(159, 82, 0)";
+      break;
       default:
         break;
     }
@@ -104,6 +107,9 @@ function DocumentIcon({
             {canDelete && renderIcon("D")}
           </>
         )}
+        {
+          isPublic && renderIcon("P")
+        }
       </div>
       <svg
         className={styles.icon}
@@ -149,6 +155,7 @@ function DocumentIcon({
           sharing={sharing}
           onClose={() => setMenuVisible(false)}
           title={name}
+          isPublic={isPublic}
         />
         <button
         tabIndex={-1}

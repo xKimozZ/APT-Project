@@ -8,25 +8,8 @@ import Checkbox from "./Checkbox";
 import DropdownMenu from "./DropdownMenu"
 import { TailSpin } from "react-loader-spinner";
 
-/**
- * Component for rendering the grayed-out modal menu for adding removal reason
- * @component
- * @param   {Function} onClose       Function to toggle the menu
- * @param   {Function} removeFunction     Function to remove post
- * @param   {string} title     Post title
- * @param   {string} postId     Post id
- * @param   {string} communityName     Community Name
- * @returns {JSX.Element}            The rendered RemoveMenu component.
- *
- * @example
- * // Note: This component relies on its wrapper to set it to be visible
- * // Therefore, if you somehow set the menu to be visible but set the passed down functions as such
- * // You wont be able to exit the menu
- * const onClose = () => { console.log("Menu toggle attempt") };
- * const removeFunction = () => { console.log("Remove attempt") };
- * <RemoveMenu  onClose={onClose} removeFunction={changeTime} />
- */
-function RemoveMenu({ sharing ,onClose, removeFunction, permissionFunction, changeFunction, fileId, name="", canDelete=true, canRename=true, isOwner=true}) {
+
+function RemoveMenu({ sharing ,onClose, removeFunction, permissionFunction, changeFunction, fileId, name="", canDelete=true, canRename=true, isOwner=true, isPublic =true}) {
   const maxChars = 20;
   const ogTitle = name;
   const [reason, setReason] = useState("None");
@@ -41,6 +24,7 @@ function RemoveMenu({ sharing ,onClose, removeFunction, permissionFunction, chan
   const [username, setUsername] = useState("");
   const [group, setGroup] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [Public, setPublic] = useState(isPublic);
 
   useEffect(() => {
     if (viewing === false) {
@@ -119,15 +103,14 @@ function RemoveMenu({ sharing ,onClose, removeFunction, permissionFunction, chan
     if (title.length === 0)
       return;
 
-    if (isOwner && !perm && sharing) {
+    if (isOwner && !perm ) {
       // Prompt the user for confirmation
       const confirmed = window.confirm("You have turned off sharing options. Are you sure you want to save? This will remove permissions for every user.");
       if (!confirmed) {
         return; // User cancelled, do nothing
       }
     }
-
-      changeFunction(fileId,title,perm);
+      changeFunction(fileId,title,perm, Public);
       onClose();
   };
 
@@ -365,6 +348,15 @@ function RemoveMenu({ sharing ,onClose, removeFunction, permissionFunction, chan
                   width: "100%",
                 }}
               >
+                <div style={{display:"flex", justifyContent:"space-between", gap:"2em"}}>
+                <Checkbox
+                  isDisabled={willDelete || !isOwner}
+                  label={"Set Public"}
+                  isChecked={Public}
+                  onToggle={() => {
+                    setPublic(!Public);
+                  }}
+                />
                 <Checkbox
                   isDanger={true}
                   isDisabled={!canDelete}
@@ -374,6 +366,7 @@ function RemoveMenu({ sharing ,onClose, removeFunction, permissionFunction, chan
                     setWillDelete(!willDelete);
                   }}
                 />
+                </div>
               </div>
       </>
     );

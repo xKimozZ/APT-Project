@@ -3,25 +3,8 @@ import ReactDOM from "react-dom";
 import styles from "./Wrapper.module.css";
 import RemoveMenu from "./RemoveMenu";
 
-/**
- * Wrapper for the menu to separate its visibility AND the actual options inside the menu itself
- * @component
- * @param   {boolean} isOpen         Flag indicating whether the menu is open or not
- * @param   {Function} onClose       Function to toggle the menu from inside
- * @param   {Function} removeFunction     Function to remove post
- * @param   {string} title     Post title
- * @param   {string} postId     Post id
- * @param   {string} communityName     Community Name
- * @returns {JSX.Element}            The rendered Wrapper component
- *
- * @example
- * // Example usage of GrayOutMenuWrapper (will be permanently on due to `isOpen` being `true`)
- * const isOpen = true;
- * const onClose = () => { console.log("Menu toggle attempt") };
- * const addFunc = () => { console.log("Remove attempt") };
- * <Wrapper isOpen={isOpen} onClose={onClose} removeFunction={addFunc} />
- */
-function Wrapper({ isOpen, onClose, title, removeFunction, permissionFunction, changeFunction, fileId, canDelete, canRename, isOwner, sharing}) {
+
+function Wrapper({ isOpen, onClose, title, removeFunction, permissionFunction, changeFunction, fileId, canDelete, canRename, isOwner, sharing, isPublic}) {
   useEffect(() => {
     // Disable scrolling on the body when the modal is open
     if (isOpen) {
@@ -76,6 +59,7 @@ function Wrapper({ isOpen, onClose, title, removeFunction, permissionFunction, c
       changeFunction={changeFunction}
       name={title}
       sharing={sharing}
+      isPublic={isPublic}
     />,
     document.body // Render the menu as a direct child of the document body
   );

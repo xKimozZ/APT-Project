@@ -13,6 +13,8 @@ public class Document {
     private String owner;
     private String content; // Quill content as JSON string
     private List<GroupPermission> groupPermissions;
+    private Boolean publicViewingOn;
+    private Boolean sharingOptionsOn;
 
     public Document() {
         this.groupPermissions = new ArrayList<>();
@@ -58,5 +60,21 @@ public class Document {
 
     public void setGroupPermissions(List<GroupPermission> groupPermissions) {
         this.groupPermissions = groupPermissions;
+    }
+
+    public Boolean isSharingOptionsOn() {
+        return sharingOptionsOn;
+    }
+
+    public void setSharingOptionsOn(Boolean sharingOptionsOn) {
+        this.sharingOptionsOn = sharingOptionsOn;
+    }
+
+    public void setPublicViewingOn(Boolean publicViewingOn) {
+        this.publicViewingOn = publicViewingOn;
+    }
+
+    public Boolean isPublicViewingOn() {
+        return publicViewingOn;
     }
 }

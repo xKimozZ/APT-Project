@@ -54,7 +54,8 @@ public class DocumentService {
     }
 
 
-    public Boolean confirmFileChanges(String fileId, String newTitle, boolean sharingOptionsOn, String username) {
+    public Boolean confirmFileChanges(String fileId, String newTitle, boolean sharingOptionsOn, String username,
+                                      boolean aPublic) {
         // Find the document by fileId
         Document document = documentRepository.findById(fileId).orElse(null);
 
@@ -68,7 +69,14 @@ public class DocumentService {
                     document.setGroupPermissions(new ArrayList<>());
                 }
                 document.setTitle(newTitle);
+                if (document.getOwner().equals(username))
+                {
+                    document.setPublicViewingOn(aPublic);
+                    document.setSharingOptionsOn(sharingOptionsOn);
+                }
                 documentRepository.save(document);
+
+
                 return true;
             }
             else {

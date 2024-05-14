@@ -19,9 +19,9 @@ function Editor({params : {fileId}}) {
     const [token, setToken] = useState("");
     const [username, setUsername] = useState("tester");
     const [newMenuOn, setNewMenuOn] = useState(false);
-    const [displayOthers, setDisplayOthers] = useState(true);
-    const [filesArray, setFilesArray] = useState([
-    ]);
+    const [editing, setEditing] = useState(false);
+    const [viewing, setViewing] = useState(false);
+    const [file, setFile] = useState(null);
 
     useEffect(() => {
       async function cookiesfn() {
@@ -33,7 +33,7 @@ function Editor({params : {fileId}}) {
             //console.log(validate);
             setToken(cookies.access_token);
             setUsername(cookies.username);
-            setLoading(false);
+            //setLoading(false);
           } else {
             router.push("/login");
           }
@@ -56,14 +56,11 @@ function Editor({params : {fileId}}) {
       router.push("/login")
     }
 
-    async function getFiles() {
-        let bodyData = {
-            username: username,
-          };
+    async function getCurrentFile() {
       try {
     
-        const files = await handler(`/get-files`, "GET", bodyData, token);//todo change api endpoint according to sortBy state
-        setFilesArray(files);
+        const file = await apiHandler(`/documents/${fileId}`, "GET", "", token);
+        setFile(file);
       
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -71,78 +68,41 @@ function Editor({params : {fileId}}) {
       }
     }
 
-    async function deleteFile(fileId) {
-        let bodyData = {
-          username: username,
-          id: fileId,
-        };
-        console.log(bodyData);
-    
-        try {
-          const sent = await handler(
-            `/delete-file`,
-            "POST",
-            bodyData,
-            token
-          );
-          console.log(sent);
-          getFiles();
-        } catch (error) {
-          console.error("Error fetching data:", error);
-        }
-      }
+    useEffect(() => {
+      getCurrentFile();
+    }, [token]);
 
-      async function changePermission(fileId, name, canView, canEdit, canRename, canDelete) {
-        let bodyData = {
-          name: name,
-          id: fileId,
-          canView: canView,
-          canEdit: canEdit,
-          canRename: canRename,
-          canDelete: canDelete,
-        };
-        getFiles();
-        console.log(bodyData);
-    
-        try {
-          const sent = await handler(
-            `/change-permissions`,
-            "POST",
-            bodyData,
-            token
-          );
-          console.log(sent);
-        } catch (error) {
-          console.error("Error fetching data:", error);
+    useEffect(() => {
+      setLoading(true);
+      const timeout = setTimeout(() => {
+        if (!file)
+          {
+            setLoading(false);
+            return;
+          }
+        let currentPermissions= file.groupPermissions.filter(permission => permission.username === username);
+        if ( currentPermissions.length > 0 ) {
+          setEditing(currentPermissions[0].canEdit);
+          setViewing(currentPermissions[0].canView);
         }
-      }
-
-      useEffect(()=> {
-        getFiles();
-      },[token]);
-
-      async function confirmFileChanges(fileId, title, sharingOptionsOn) {
-        let bodyData = {
-          username:username,
-          title: title,
-          id: fileId,
-          sharingOptions: sharingOptionsOn,
-        };
-        console.log(bodyData);
-    
-        try {
-          const sent = await handler(
-            `/file-change`,
-            "POST",
-            bodyData,
-            token
-          );
-          console.log(sent);
-          getFiles();
-        } catch (error) {
-          console.error("Error fetching data:", error);
+        else
+        {
+          setEditing(false);
+          setViewing(false);
         }
-      }
+        if (file.publicViewingOn)
+          setViewing(true);
+        if (file.owner === username)
+          {
+            setEditing(true);
+            setViewing(true);
+          }
+        setLoading(false);
+    }, 1000);
+    
+    return () => clearTimeout(timeout);
+    
+    }, [file]);
 
       async function newFile(title) {
         let bodyData = {
@@ -152,26 +112,15 @@ function Editor({params : {fileId}}) {
         console.log(bodyData);
     
         try {
-          const sent = await handler(
-            `/new-file`,
-            "POST",
-            bodyData,
-            token
-          );
+          if (!await validateSession())
+            return;
+          const sent = await apiHandler(`/documents`, "POST", bodyData, token);
+          window.alert("File created");
           console.log(sent);
-          getFiles();
         } catch (error) {
           console.error("Error fetching data:", error);
         }
       }
-
-      const filteredFiles = useMemo(() => {
-        if (displayOthers) {
-          return filesArray;
-        } else {
-          return filesArray.filter(file => file.owner === username);
-        }
-      }, [displayOthers, filesArray, username]);
 
   return (
     <>
@@ -234,7 +183,7 @@ function Editor({params : {fileId}}) {
             </svg>
             New Document
           </OutlineButton>
-          Editing as {username}
+          {editing ? "Editing" : "Viewing"} as {username}
           </div>
           
           <WrapperNew
@@ -242,13 +191,16 @@ function Editor({params : {fileId}}) {
             isOpen={newMenuOn}
             newFunction={newFile}
           />
-          <div style={{ marginRight: "1em" }}>
-            Currently editing file ID: <strong>{fileId}</strong>
+          <div style={{ marginRight: "1em", fontSize:"0.9em" }}>
+            Currently {editing ? "editing" : "viewing"} file ID: <strong>{fileId}</strong><br/>
+            Title: <strong>{file && file.title}</strong>
+            <br/>
+            Owner: <strong>{file && file.owner}</strong>
           </div>
         </div>
       </div>
       <div className={styles.fileContainer}>
-        {true ? (
+        {file && viewing ? (
           <div
             style={{ display: "flex", width: "100%", justifyContent: "center" }}
           >
@@ -264,11 +216,13 @@ function Editor({params : {fileId}}) {
           >
             <div
               className={styles.kitteh}
-              style={{ backgroundImage: `url(${kitteh.src})` }}
+              style={{ backgroundImage: `url(${kitteh.src})`, width:"100%"}}
             ></div>
-            <span style={{ textAlign: "center", width: "100%" }}>
+            { !file ? <span style={{ textAlign: "center", width: "100%" }}>
               File ID {fileId} doesn't exist!
-            </span>
+            </span> : <span style={{ textAlign: "center", width: "100%" }}>
+              You don't have access to this file.
+            </span>}
           </div>
         )}
       </div>
