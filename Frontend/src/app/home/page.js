@@ -590,7 +590,7 @@ function FileExplorer() {
                   </svg>
                   New Document
                 </OutlineButton>
-                Signed in as {username}
+                Signed in as <strong>{username}</strong>
               </div>
               <WrapperNew
                 onClose={() => setNewMenuOn(false)}

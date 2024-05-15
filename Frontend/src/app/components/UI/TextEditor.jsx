@@ -4,6 +4,7 @@ import "quill/dist/quill.snow.css";
 import "./TextEditor.css";
 import { io } from "socket.io-client";
 import { useParams } from "react-router-dom";
+import configuration from "@/app/configuration"
 
 const SAVE_INTERVAL_MS = 2000;
 const TOOLBAR_OPTIONS = [
@@ -16,7 +17,7 @@ export default function TextEditor({ documentId = -1, readOnly = false }) {
 
   useEffect(() => {
     // Use your hosting device IP from network settings
-    const s = io("http://192.168.1.11:8082");
+    const s = io(`http://${configuration.localhost}:8082`);
     setSocket(s);
 
     return () => {
@@ -67,6 +68,8 @@ export default function TextEditor({ documentId = -1, readOnly = false }) {
 
     const handler = (delta, oldDelta, source) => {
       if (source !== "user") return;
+      
+      console.log(delta);
       socket.emit("send-changes", delta);
     };
     quill.on("text-change", handler);

@@ -10,8 +10,8 @@ import getCookies from "@/app/utils/getCookies";
 import apiHandler from "@/app/utils/apiHandler.js"
 import { TailSpin } from "react-loader-spinner";
 import WrapperNew from "@/app/components/UI/WrapperNew";
-import RichTextEditor from "@/app/components/UI/RichTextEditor";
 import TextEditor from "@/app/components/UI/TextEditor";
+import DropdownMenu from "@/app/components/UI/DropdownMenu";
 
 function Editor({params : {fileId}}) {
   const router = useRouter();
@@ -203,7 +203,9 @@ function Editor({params : {fileId}}) {
       <div className={styles.fileContainer}>
         {file && viewing ? (
           <>
-          <div style={{ minHeight: "16px"}}></div>
+          <div style={{ minHeight: "16px", display: "flex", justifyContent:"center", width:"100%"}}>
+            {file.owner === username && <DropdownMenu />}
+          </div>
           <div
             style={{ display: "flex", width: "100%", justifyContent: "center" }}
           >
