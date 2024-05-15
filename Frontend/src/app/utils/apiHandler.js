@@ -1,9 +1,9 @@
-
+import configuration from "@/app/configuration"
 
 async function handler(url, method, body, token="") {
     try {
       // Use your device IP (check network settings)
-      const base_url = 'http://192.168.1.11:8081';
+      const base_url = `http://${configuration.localhost}:8081`;
       const headers = token !== "" ? {"Content-Type": "application/json","Authorization": `Bearer ${token}`} : {"Content-Type": "application/json"}
 
   
