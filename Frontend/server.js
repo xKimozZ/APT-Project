@@ -28,6 +28,10 @@ io.on("connection", socket => {
 
     socket.emit("version-history", document.versions)
 
+    socket.on('update-version', (version) => {
+      socket.broadcast.to(documentId).emit('version-changed', version);
+    });
+
     socket.on("send-changes", delta => {
       //console.log(`Sent + ${delta}`);
       socket.broadcast.to(documentId).emit("receive-changes", delta)

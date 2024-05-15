@@ -82,22 +82,26 @@ export default function TextEditor({ documentId = -1, readOnly = false , setVers
   useEffect(() => {
     if (socket == null) return;
 
-    // Listen for version history from the server
     socket.on("version-history", (versions) => {
-      console.log("Received version history:", versions);
-      // Handle version history received from the server
       setVersions(versions);
+    });
+
+    socket.on("version-changed", (data) => {
+      console.log(data);
+      quill.setContents(data);
     });
 
     return () => {
       socket.off("version-history");
+      socket.off("version-changed");
     };
-  }, [socket]);
+  }, [socket, quill, setVersions]);
 
   useEffect(() => {
     if (socket == null || versionState == null) return;
 
     // Send a save-document event when versionState changes
+    socket.emit("update-version", versionState);
     socket.emit("save-document", versionState);
     quill.setContents(versionState);
 
