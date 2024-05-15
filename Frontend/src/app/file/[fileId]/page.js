@@ -129,10 +129,11 @@ function Editor({params : {fileId}}) {
 
       useEffect(() => {
         if (versions.length !== 0) {
-          const dates = versions.map(version => version.date);
-          setVersionDates(dates);
+          const sortedDates = versions.map(version => version.date).sort((a, b) => new Date(b) - new Date(a));
+          setVersionDates(sortedDates);
         }
       }, [versions]);
+      
 
       useEffect(() => {
         if (chosenDate !== '') {
