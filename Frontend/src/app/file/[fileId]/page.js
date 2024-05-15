@@ -204,7 +204,6 @@ function Editor({params : {fileId}}) {
         {file && viewing ? (
           <>
           <div style={{ minHeight: "16px", display: "flex", justifyContent:"center", width:"100%"}}>
-            {file.owner === username && <DropdownMenu />}
           </div>
           <div
             style={{ display: "flex", width: "100%", justifyContent: "center" }}
