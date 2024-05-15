@@ -26,6 +26,8 @@ io.on("connection", socket => {
     socket.join(documentId)
     socket.emit("load-document", document.data)
 
+    socket.emit("version-history", document.versions)
+
     socket.on("send-changes", delta => {
       //console.log(`Sent + ${delta}`);
       socket.broadcast.to(documentId).emit("receive-changes", delta)
@@ -39,7 +41,7 @@ io.on("connection", socket => {
       await Document.findByIdAndUpdate(documentId, {
         $push: { versions: { data: document.data } }
       });
-    }, 20000);
+    }, 5000);
   })
 })
 

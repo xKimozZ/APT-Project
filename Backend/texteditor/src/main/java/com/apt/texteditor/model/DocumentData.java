@@ -8,6 +8,7 @@ public class DocumentData {
     @Id
     private String id;
     private List<Version> versions;
+    private List<Operation> data;
 
     public void setId(String id) {
         this.id = id;
@@ -23,5 +24,13 @@ public class DocumentData {
 
     public List<Version> getVersions() {
         return versions;
+    }
+
+    public List<Operation> getData() {
+        return data;
+    }
+
+    public void setData(List<Operation> data) {
+        this.data = data;
     }
 }

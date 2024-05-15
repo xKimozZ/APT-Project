@@ -23,6 +23,10 @@ function Editor({params : {fileId}}) {
     const [editing, setEditing] = useState(false);
     const [viewing, setViewing] = useState(false);
     const [file, setFile] = useState(null);
+    const [versions, setVersions] = useState([]);
+    const [versionDates, setVersionDates] = useState([]);
+    const [chosenDate, setChosenDate] = useState('');
+    const [chosenVersionData, setChosenVersionData] = useState(null);
 
     useEffect(() => {
       async function cookiesfn() {
@@ -123,6 +127,28 @@ function Editor({params : {fileId}}) {
         }
       }
 
+      useEffect(() => {
+        if (versions.length !== 0) {
+          const dates = versions.map(version => version.date);
+          setVersionDates(dates);
+        }
+      }, [versions]);
+
+      useEffect(() => {
+        if (chosenDate !== '') {
+          const chosenVersion = versions.find(version => version.date === chosenDate);
+          if (chosenVersion) {
+            setChosenVersionData(chosenVersion.data);
+            console.log(chosenVersion.data);
+          } else {
+            setChosenVersionData(null);
+          }
+        } else {
+          setChosenVersionData(null);
+        }
+      }, [chosenDate]);
+      
+
   return (
     <>
     {loading ? <div style={{display:"flex",flexDirection:"column",width:"100%",alignItems:"center",
@@ -204,13 +230,14 @@ function Editor({params : {fileId}}) {
         {file && viewing ? (
           <>
           <div style={{ minHeight: "16px", display: "flex", justifyContent:"center", width:"100%"}}>
+            {file.owner === username && versions.length>0 && <DropdownMenu list={versionDates} selection={"Choose a version"} choose={setChosenDate}/>}
           </div>
           <div
             style={{ display: "flex", width: "100%", justifyContent: "center" }}
           >
             {/*<RichTextEditor setContent={() => {}} setRawContent={() => {}} />*/}
             
-            <TextEditor documentId={fileId} readOnly={!editing}/>
+            <TextEditor documentId={fileId} readOnly={!editing} setVersions={setVersions} versionState={chosenVersionData}/>
           </div></>
         ) : (
           <div

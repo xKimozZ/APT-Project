@@ -2,10 +2,10 @@ import React from "react";
 import { useState, useRef, useEffect } from "react";
 import styles from "./DropdownMenu.module.css";
 
-function DropdownMenu({choose, list, selection}) {
+function DropdownMenu({choose, list, selection="Choose a user"}) {
   const [showList, setShowList] = useState(false);
   const [transition, setTransition] = useState(false);
-  const [selectedItem, setSelectedItem] = useState("Choose a user");
+  const [selectedItem, setSelectedItem] = useState(selection);
   const ref = useRef(null);
 
   useEffect(() => {

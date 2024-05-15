@@ -11,7 +11,7 @@ const TOOLBAR_OPTIONS = [
   ["bold", "italic"],
 ];
 
-export default function TextEditor({ documentId = -1, readOnly = false }) {
+export default function TextEditor({ documentId = -1, readOnly = false , setVersions=()=>{}, versionState=null}) {
   const [socket, setSocket] = useState();
   const [quill, setQuill] = useState();
 
@@ -78,6 +78,30 @@ export default function TextEditor({ documentId = -1, readOnly = false }) {
       quill.off("text-change", handler);
     };
   }, [socket, quill, readOnly]);
+
+  useEffect(() => {
+    if (socket == null) return;
+
+    // Listen for version history from the server
+    socket.on("version-history", (versions) => {
+      console.log("Received version history:", versions);
+      // Handle version history received from the server
+      setVersions(versions);
+    });
+
+    return () => {
+      socket.off("version-history");
+    };
+  }, [socket]);
+
+  useEffect(() => {
+    if (socket == null || versionState == null) return;
+
+    // Send a save-document event when versionState changes
+    socket.emit("save-document", versionState);
+    quill.setContents(versionState);
+
+  }, [socket, versionState]);
 
   const wrapperRef = useCallback((wrapper) => {
     if (wrapper == null) return;
